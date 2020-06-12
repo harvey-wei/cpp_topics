@@ -1,0 +1,37 @@
+#include "iostream"
+using namespace std;
+class A 
+{
+public:
+	A()
+	{
+		cout << "Constructor of A" <<endl;
+	}
+	~A()
+	{
+		cout << "Destructor of A" <<endl;
+	}
+private:
+	// Like private data member, the private is inaccessible from outside the class body!!!
+	// Nevertheless, you can call it via public function indirectly
+	void test()
+	{
+		cout << "Here is private function " <<endl; 
+	}
+public:
+	void show()
+	{
+		/* this-> A::A(); */
+		/* A(); */
+		/* this-> A::~A(); */
+		test();
+	}
+
+	
+};
+
+int main()
+{
+	A a;
+	a.show();
+}
