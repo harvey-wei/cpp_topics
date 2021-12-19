@@ -26,6 +26,10 @@ int main()
 	Coordinate coor2(2, 4);
 	Coordinate coor3(0, 0);
 
+    int a, b;
+    cin >> a >> b;
+    cout << "a + b " << a + b << endl;
+
 	coor3 = coor1 + coor2;
 	/* cout << coor3.get_x() << "," << coor3.get_y() << endl; */	
 	/* cout << coor3 << endl;; // operator<<(ostream &output, Coordinate coor) */

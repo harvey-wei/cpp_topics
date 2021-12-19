@@ -20,7 +20,7 @@ int division(int dividend, int divisor)
 	return dividend / divisor;
 }
 
-int main()
+int main_as()
 {
 	int dividend(0);
 	int divisor(0);

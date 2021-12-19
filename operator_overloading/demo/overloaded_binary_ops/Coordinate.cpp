@@ -103,7 +103,7 @@ int Coordinate::operator[](int ind)
 			}
 			else
 			{
-				throw string("ind must be either 0 or 1!");
+				throw string("index must be either 0 or 1!");
 			}
 	
 				

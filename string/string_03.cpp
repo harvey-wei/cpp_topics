@@ -18,7 +18,7 @@ class Student
 			cout << "Age is " << age << endl;
 		}
 };
-int main()
+int main_as()
 {
 	Student student_1;
 	Student student_2; 

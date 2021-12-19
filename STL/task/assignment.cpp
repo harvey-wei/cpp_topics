@@ -17,7 +17,7 @@ int main()
 	vector<int>:: iterator iter_vec(vec.begin());
 	for(; iter_vec != vec.end(); iter_vec ++)
 	{
-		cout << *iter_vec << endl;	
+                cout << *iter_vec << endl;	
 	}
 
 	// Map  
@@ -33,7 +33,7 @@ int main()
 	map<string, string>::iterator iter_map(m.begin());
 	for(;iter_map != m.end(); iter_map ++)
 	{
-		cout << iter_map -> first << ", " << iter_map -> second	<< endl;
+                cout << iter_map -> first << ", " << iter_map -> second	<< endl;
 	}
 
 	return 0;

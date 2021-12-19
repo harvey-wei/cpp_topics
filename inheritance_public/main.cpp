@@ -3,14 +3,14 @@
 
 int main()
 {
-	Worker *p = new Worker();
+	Worker *p = new Worker()[10];
 	/* p->m_str_name = "Jim"; */
 	/* p->m_int_age = 20; */
 	p->eat();
 	p->m_int_salary = 2000;
 	p->work();
 	p->m_int_age = 100;  // after inheriatnce 
-	p->m_int_height;  
+//	p->m_int_height;
 
 	/* Worker worker_1; */
 	/* worker_1.m_str_name = "Kevin"; */

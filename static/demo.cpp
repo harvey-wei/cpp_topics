@@ -20,6 +20,7 @@ int main()
 	Tank * q = new Tank('B');
 	if(!q) {cout << "Fail to allocate heap space" << endl;}
 	cout << Tank::get_count() << endl;
+	cout << 
 
 	delete p;
 	p = nullptr;

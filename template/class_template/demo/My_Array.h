@@ -5,7 +5,7 @@
 using namespace std;
 //!!!!!!
 /*
-In contrast to regular class, member functiuo of class template must positioned in the file where class is declared, i.e. .h file!1
+In contrast to regular class, member function of class template must positioned in the file where class is declared, i.e. .h file!1
 */
 /*
 For each member funciton definition outside the class, you should note:

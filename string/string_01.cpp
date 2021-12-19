@@ -2,7 +2,7 @@
 #include "string"
 using namespace std;
 
-int main()
+int main_a1()
 {
 	// different ways to concatenate strings!!!!
 	string s1 = "hello";  // c-style initialization

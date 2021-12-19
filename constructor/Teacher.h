@@ -1,5 +1,6 @@
 #ifndef TEACHER_H
-#define TEACHER_H 
+#define TEACHER_H
+
 #include "iostream"
 #include "string"
 using namespace std;
@@ -11,7 +12,7 @@ class Teacher
 {
 	public:
 	//Overloaded Constructors
-	Teacher();
+	Teacher();  // default constructor
 	Teacher(string name, int age = 20); // collide with Teacher()
 	// It is good practice to put default value only in the declaration!!!!
 
@@ -20,9 +21,11 @@ class Teacher
 	string get_name();
 	void set_age(int _age);
 	int get_age();
+    
 	private:
 	string m_str_name;
 	int m_int_age;
 
 };
+
 #endif

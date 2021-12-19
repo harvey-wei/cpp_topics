@@ -1,35 +1,38 @@
-#include "coordinate.h"
-#include "iostream"
+//
+//  coordinate.cpp
+//  cpp_basic_xcode
+//
+//  Created by Harvey MAO on 2021/10/29.
+//
+
+#include "coordinate.hpp"
+#include <iostream>
 using namespace std;
-// Stick to the strategy of separating declaration and implementation
-// into different files,i.e. source file and header file!!!
-Coordinate::Coordinate(int _x, int _y)
-{
-	m_int_x = _x;
-	m_int_y = _y;
-	cout << "Coordinate(int _x, int _y)" << endl;
 
+Cooridnate::Cooridnate(int _x, int _y){
+    m_int_x = _x;
+    m_int_y = _y;
+    
+    cout << "Cooridnate::Cooridnate(int _x, int _y)" << endl;
 }
 
-Coordinate::~Coordinate()
-{
-	cout << "~Coordinate()" << endl;
+Cooridnate::~Cooridnate() {
+    cout << "~Coordiante()" << endl;
 }
 
+void Cooridnate::set_coor_x(int _x) {
+    m_int_x = _x;
+}
 
-void Coordinate::set_coor_x(int _x)
-{
-	m_int_x = _x;
+void Cooridnate::set_coor_y(int _y) {
+    m_int_y = _y;
 }
-void Coordinate::set_coor_y(int _y)
-{
-	m_int_y = _y;
+
+int Cooridnate::get_coor_x() {
+    return m_int_x;
 }
-int Coordinate::get_coor_x()
-{
-	return m_int_x;
+
+int Cooridnate::get_coor_y() {
+    return m_int_y;
 }
-int Coordinate::get_coor_y()
-{
-	return m_int_y;
-}
+

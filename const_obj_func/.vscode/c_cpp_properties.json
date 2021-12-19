@@ -1,0 +1,25 @@
+// Config Reference at https://segmentfault.com/a/1190000039129854
+{
+    "configurations": [
+      {
+        "name": "Mac",
+        "includePath": [
+          "${workspaceFolder}/**",
+          "/Library/Developer/CommandLineTools/usr/include",
+          //"/Library/Developer/CommandLineTools/usr/lib/clang/12.0.5/include"
+          // 请根据你的clang版本修改，我这里是11.0.3
+        ],
+        "defines": [],
+        "macFrameworkPath": [
+          "/System/Library/Frameworks",
+          "/Library/Frameworks"
+        ],
+        "compilerPath": "/usr/bin/g++",
+        "cStandard": "c11",
+        "cppStandard": "c++17",
+        "intelliSenseMode": "clang-x64"
+        // "compileCommands": "${workspaceFolder}/build/compile_commands.json"
+      }
+    ],
+    "version": 4
+  }

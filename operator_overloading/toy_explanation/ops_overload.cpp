@@ -13,7 +13,7 @@ class Complex
 	public:
 		// constructor
 		Complex(double _real = 0, double _imag = 0)
-			:m_db_real(_real), m_db_imag(_imag)
+			:m_db_real(_real), m_db_imag(_imag)   // initializer list
 		{
 			cout << "Complex" << endl;
 		}
@@ -41,8 +41,8 @@ class Complex
 
 		// Declare the operator function(overloaded operator) as non-member function!
 		/*
-			// The global operator function is made friend of this class so 
-// that it can access private members. Recalls that the friend function has the right to access the private and protected members!!!
+		// The global operator function is made friend of this class so 
+                // that it can access private members. Recalls that the friend function has the right to access the private and protected members!!!
 		*/
 		friend Complex operator * (Complex & _obj_1, Complex & _obj_2);
 //		friend Complex operator / (Complex & _obj_1, Complex & _obj_2);
