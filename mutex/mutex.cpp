@@ -1,4 +1,4 @@
-I run the following program on a 32 cores computer:
+// I run the following program on a 32 cores computer:
 
 #include<iostream>
 #include<algorithm>
