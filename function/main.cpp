@@ -19,9 +19,7 @@ int main()
 	
 	// overload in C++ function
 	cout <<	get_max(12,36,56) << endl;
-	
 		
-
 }
 
 void fun_1(int i, int j, int k)
@@ -48,6 +46,4 @@ inline double get_max(double x, double y)
 {
 	//todo 
 	return x > y ? x : y;
-
-
 }
