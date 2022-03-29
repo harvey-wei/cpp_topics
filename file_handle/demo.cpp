@@ -7,9 +7,14 @@ using namespace std;
 int main () {
    char data[100];
 
-   // open a file in write mode.
+   // ofstream defaults to be ios::out mode, automatically deletes
+   // the content of file. 
+   // To append the content, open in ios:app
+   // outfile.open("afile.txt", ios::app)
+   // open a file in appending mode to avoid overwriting
+   // To clear the content in the file before opening, use ios::trunc
    ofstream outfile;
-   outfile.open("afile.txt");
+   outfile.open("afile.txt", ios::app);
 
    cout << "Writing to the file" << endl;
    cout << "Enter your name: "; 
