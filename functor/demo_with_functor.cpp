@@ -22,7 +22,7 @@ class increment
     int num;
   public:
     // constructor
-    increment(int n) 
+    increment(int n)
       : num(n)
     {}
 
@@ -44,7 +44,7 @@ int main()
   // class (object) increment acts as a function
   // Functor is short for function object
   /*
-     The above line amounts to 
+     The above line amounts to
      increment obj(to_add);
      transform(arr, arr+n, arr, obj);
   */
