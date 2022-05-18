@@ -9,7 +9,7 @@ template <typename T> type as template parameter
 template <class T>
 template <int size> variable as template parameter
 
-template <typename T, typename C>  comm-separated list  There must be one typename for one parameter!
+template <typename T, typename C>  comma-separated list  There must be one typename for one parameter!
 template <typename T, class U>   // legal
 template <typename T, int size>  // legal
 
@@ -82,4 +82,3 @@ int main()
 
 	return 0;
 }
-
