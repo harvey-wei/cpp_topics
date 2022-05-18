@@ -30,3 +30,6 @@
 *.exe
 *.out
 *.app
+
+# MacOS file to hold the user's folder view preferences
+.DS_Store
