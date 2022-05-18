@@ -30,6 +30,12 @@
 *.exe
 *.out
 *.app
+*.out
+*.o
+*.swp
+*.gch
+.cache
+.ccls-cache
 
 # MacOS file to hold the user's folder view preferences
 .DS_Store
