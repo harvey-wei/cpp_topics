@@ -1,6 +1,7 @@
 // Another example program to demonstrate working
 // of enum in C
 // https://www.geeksforgeeks.org/enumeration-enum-c/
+// https://stackoverflow.com/questions/30047021/scope-of-enum-in-c-vs-c
 
 #include <iostream>
 
