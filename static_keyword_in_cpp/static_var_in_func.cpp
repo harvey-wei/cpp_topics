@@ -12,26 +12,29 @@ From the perspective of memory space, the static object is stored in the static 
 #include <iostream>
 using namespace std;
 
-void demo()
+int& demo()
 {
 	// declare a static variable
 	static int counter(0);  // the counter gets initialized only once even if the demo() is invoked multiple times
 	/*
 	You can see in the above program that the variable count is declared as static. So, its value is carried through the function calls. The variable count is not getting initialized for every time the function is called.
 	*/
-	
+
 	cout << "The value of static variable counter is " <<  counter << endl;
-	
+
 	// Value is upated and it will be carried to the next function call!
 	counter ++;
 
+    return counter;
 }
 
 int main()
 {
 	for(int i(1); i < 6; i++)
 	{
-		demo();
+		int & var = demo();
+        std::cout << "var: " << var << std::endl;
 	}
+
 	return 0;
 }
