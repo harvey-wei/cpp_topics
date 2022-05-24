@@ -20,8 +20,7 @@ using namespace std;
 class StaVar
 {
 	public:
-		static int i; // no initialization 
-		
+		static int i; // no initialization
 
 		StaVar()
 		{
@@ -34,7 +33,7 @@ int StaVar::i = 1; // a static variable inside a class should be initialized exp
 
 int main()
 {
-	// the wrong use of the static variable inside of the class 
+	// the wrong use of the static variable inside of the class
 	/* StaVar obj1, obj2; */
 	/* obj1.i = 2; */
 	/* obj2.i = 3; */
@@ -43,7 +42,7 @@ int main()
 	/* cout << obj1.i << " " << obj2.i << endl; */
 	StaVar::i ++;
 	// ClassName:: Static variable name can access the static data member!!!
-	// 
+
 	cout << StaVar::i << endl;
 
 	return 0;
