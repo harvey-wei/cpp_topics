@@ -7,19 +7,22 @@
  * The Singleton class defines the `GetInstance` method that serves as an
  * alternative to constructor and lets clients access the same instance of this
  * class over and over.
- * Two ways to implement singleton pattern.
- * https://stackoverflow.com/questions/13047526/difference-between-singleton-implemention-using-pointer-and-using-static-object
  */
-
 class Singleton
 {
+
+    /**
+     * The Singleton's constructor should always be private to prevent direct
+     * construction calls with the `new` operator.
+     */
 
 protected:
     Singleton(const std::string value): value_(value)
     {
     }
 
-    static Singleton singleton_;
+    static Singleton* singleton_;
+    /* static std::unique_ptr<Singleton> singleton_; */
 
     std::string value_;
 
@@ -36,7 +39,16 @@ public:
      */
     void operator=(const Singleton &) = delete;
 
-    static Singleton &GetInstance(const std::string& value);
+    /**
+     * This is the static method that controls the access to the singleton
+     * instance. On the first run, it creates a singleton object and places it
+     * into the static field. On subsequent runs, it returns the client existing
+     * object stored in the static field.
+     * No memory leak?
+     * https://stackoverflow.com/questions/29770293/static-pointers-and-other-curious-stuff?rq=1
+     * https://stackoverflow.com/questions/2429408/c-freeing-static-variables
+     */
+    static Singleton *GetInstance(const std::string& value);
 
     /**
      * Finally, any singleton should define some business logic, which can be
@@ -52,36 +64,36 @@ public:
     }
 };
 
+/* Singleton* Singleton::singleton_= nullptr; */
+Singleton* Singleton::singleton_= nullptr;
 
 /**
  * Static methods should be defined outside the class.
  */
-Singleton &Singleton::GetInstance(const std::string& value)
+Singleton *Singleton::GetInstance(const std::string& value)
 {
     /**
-      * The statement `static Singleton inst(value);`
-      * means the first time the function is called this variable will be initialized and unlike
-      * non-static variables it will not be destroyed once the function ends. So when you call it
-      * again it will still exist so the only instruction that will be executed the 2nd
-      * (3rd, 4th, ...) time is return inst.
-      */
-    static Singleton inst(value);
-
-    return inst;
+     * This is a safer way to create an instance. instance = new Singleton is
+     * dangerous in case two instance threads wants to access at the same time
+     */
+    if(singleton_==nullptr){
+        singleton_ = new Singleton(value);
+    }
+    return singleton_;
 }
 
 void ThreadFoo(){
     // Following code emulates slow initialization.
     std::this_thread::sleep_for(std::chrono::milliseconds(1000));
-    Singleton &singleton = Singleton::GetInstance("FOO");
-    std::cout << singleton.value() << "\n";
+    Singleton* singleton = Singleton::GetInstance("FOO");
+    std::cout << singleton->value() << "\n";
 }
 
 void ThreadBar(){
     // Following code emulates slow initialization.
     std::this_thread::sleep_for(std::chrono::milliseconds(1000));
-    Singleton &singleton = Singleton::GetInstance("BAR");
-    std::cout << singleton.value() << "\n";
+    Singleton* singleton = Singleton::GetInstance("BAR");
+    std::cout << singleton->value() << "\n";
 }
 
 
@@ -94,10 +106,10 @@ int main()
     /* std::thread t2(ThreadBar); */
     /* t1.join(); */
     /* t2.join(); */
-    Singleton &singleton = Singleton::GetInstance("DDD");
-    std::cout << singleton.value() << "\n";
-    Singleton &singleton_two = Singleton::GetInstance("AAA");
-    std::cout << singleton_two.value() << "\n";
+    Singleton* singleton = Singleton::GetInstance("DDD");
+    std::cout << singleton->value() << "\n";
+    Singleton* singleton_two = Singleton::GetInstance("AAA");
+    std::cout << singleton_two->value() << "\n";
 
     return 0;
 }
