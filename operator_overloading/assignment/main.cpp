@@ -10,7 +10,7 @@ using namespace std;
 // By default, operator--() is prefix,  operator --(int) is suffix version!(as member function)
 // decrement is unary ops while + is binary ops!
 
-class Coordinate 
+class Coordinate
 {
 	friend ostream & operator<<(ostream & output, Coordinate coor);
 	public:
@@ -26,7 +26,7 @@ class Coordinate
 		{
 			this->m_i_x --;
 			this->m_i_y --;
-			
+
 			return *this;
 		}
 
@@ -60,7 +60,7 @@ ostream & operator<<(ostream & output, Coordinate coor)
 	// Upside of overloaded << is that you can put the compliated struncture into ostream !!!
 	output << "("<<coor.m_i_x << ", " << coor.m_i_y << ")";
 
-	return output;	
+	return output;
 }
 
 int main()
@@ -79,3 +79,16 @@ int main()
 
 	return 0;
 }
+
+
+/** Q: Is space allowed between operator keyword and operator sign?
+  * A: Yes.
+  * ref: https://www.geeksforgeeks.org/operator-overloading-c/
+  *
+  * Q: Is operator followed by operator sign acting as function name?
+  * A: Yes.
+  *
+  * Q: What operators can we not overload?
+  * A: sizeof, typeid, scope resolution(::), Class member access operators (.(dot), .* (pointer to member operator))
+  * ref: https://www.geeksforgeeks.org/operator-overloading-c/
+  */

@@ -19,8 +19,6 @@ protected:
     {
     }
 
-    static Singleton singleton_;
-
     std::string value_;
 
 public:
