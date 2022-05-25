@@ -91,4 +91,6 @@ int main()
   * Q: What operators can we not overload?
   * A: sizeof, typeid, scope resolution(::), Class member access operators (.(dot), .* (pointer to member operator))
   * ref: https://www.geeksforgeeks.org/operator-overloading-c/
+  * Q: can -> and ->* be overloaded?
+  * A: Yes
   */

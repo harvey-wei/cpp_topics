@@ -34,7 +34,7 @@ public:
      */
     void operator=(const Singleton &) = delete;
 
-    static Singleton &GetInstance(const std::string& value);
+    static Singleton & GetInstance(const std::string& value);
 
     /**
      * Finally, any singleton should define some business logic, which can be
