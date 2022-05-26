@@ -3,7 +3,7 @@
 #include <iterator>
 
 /*
-   A lambda can introduce new variables in its body (in C++14), and it can also access, or capture, variables from the surrounding scope. :
+   A lambda can introduce new variables in its body (in C++14), and it can also access, or capture, variables from the surrounding scope.
 */
 
 void abssort(float* x, unsigned int n)
