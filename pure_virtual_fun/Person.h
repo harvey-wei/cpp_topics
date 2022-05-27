@@ -28,7 +28,7 @@ A pure virtual function is implemented by classes which are derived from a Abstr
 We can have pointers and references of abstract class type. That means the pointer of abstract class(base) can point to the derived class(non-abstract)
 */
 
-class Person 
+class Person
 {
 	protected:
 		string m_str_name;
@@ -36,9 +36,10 @@ class Person
 	public:
 		Person(string _name);
 		virtual ~Person();
-		// pure virtual function can also be inherited // the same 
+		// pure virtual function can also be inherited // the same
 		virtual void work() = 0; // pure virtual function "=0" in place of body
 };
 
 // When keeping the declaration separate from the definition, virtual keyword only occur in the the declaration!!!
+// https://www.geeksforgeeks.org/pure-virtual-functions-and-abstract-classes/
 #endif
