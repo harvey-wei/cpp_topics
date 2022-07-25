@@ -115,3 +115,13 @@ int Coordinate::operator[](int ind)
 		//exit() terminates the calling process without executing the rest code which is after the exit() function.
 	}
 }
+
+int Coordinate::operator()(int factor)
+{
+    return factor * 10;
+}
+
+int Coordinate::call_parentheses(int factor)
+{
+    return operator()(factor);
+}

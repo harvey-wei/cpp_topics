@@ -34,7 +34,9 @@ int main()
 	/* cout << coor3.get_x() << "," << coor3.get_y() << endl; */	
 	/* cout << coor3 << endl;; // operator<<(ostream &output, Coordinate coor) */
 	cout << coor3[0] << endl;
-	cout << coor3[3] << endl;
+	cout << coor3[1] << endl;
+
+    std::cout << "Call overloaded operator () " << coor1.call_parentheses(3) << std::endl;
 
 	return 0;
 }

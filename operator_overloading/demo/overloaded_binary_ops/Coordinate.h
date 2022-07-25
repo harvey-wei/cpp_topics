@@ -15,7 +15,6 @@ class Coordinate
 		// Constructor
 		Coordinate(int _x, int _y);
 		Coordinate & operator++();   // unary operator, prefix ++
-		
 		Coordinate operator++(int); // int is a flag for suffix ++
 		// For suffix ++(++a), the expression's value = old value!Hence, can not return a reference but a new object
 		// operator function as an member function!!!
@@ -26,9 +25,12 @@ class Coordinate
 		// this ptr is the first parameter
 		int operator[](int ind);
 
+        int operator()(int factor);
+        int call_parentheses(int factor);
+
 		int get_x();
 		int get_y();
-	
+
 	private:
 		int m_int_x;
 		int m_int_y;
