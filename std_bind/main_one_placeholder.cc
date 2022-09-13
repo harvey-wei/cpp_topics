@@ -20,7 +20,7 @@ int main()
 	using namespace std::placeholders;
 
 	// Use of bind() to bind the function
-	// _1 is for first parameter and assigned
+	// _1 is for first parameter of function returned by bind and assigned
 	// to 'a' in above declaration.
 	// 2 is assigned to b
 	// 3 is assigned to c

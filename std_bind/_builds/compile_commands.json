@@ -1,7 +1,0 @@
-[
-{
-  "directory": "/Users/harveymao/Desktop/Files/research/algorithm_data_structure/code/cpp/cpp_basic_topics/std_bind/_builds",
-  "command": "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++    -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.3.sdk -std=gnu++11 -o CMakeFiles/a.out.dir/main.cc.o -c /Users/harveymao/Desktop/Files/research/algorithm_data_structure/code/cpp/cpp_basic_topics/std_bind/main.cc",
-  "file": "/Users/harveymao/Desktop/Files/research/algorithm_data_structure/code/cpp/cpp_basic_topics/std_bind/main.cc"
-}
-]
