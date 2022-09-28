@@ -1,21 +1,33 @@
 #include <iostream>
-#include <limits>
+
+bool is_big_endian()
+{
+    // ref: https://stackoverflow.com/questions/1001307/detecting-endianness-programmatically-in-a-c-program
+    union {
+        uint32_t i;
+        char c[4];
+    } bint = {0x01020304}; // 16909060
+
+    /* Is big place value in the first byte? */
+    std::cout << bint.i << std::endl;
+    return bint.c[0] == 1;
+}
 
 int main()
 {
-    /* For signed integer of length N-bits, it ranges from -2^(N-1) ~ (2^(N-1) - 1). In other
-    words, each positive integer has a corresponding negative integer but -2^(N-1) does not
-    correspond to any positive integer. - pos_int may cause underflow problem.*/
-    std::cout << "The int32 range: " << INT32_MIN << "~" << INT32_MAX << std::endl;
+    std::cout << "Is big endian? "<< is_big_endian() << std::endl;
+    /* The way the computer stores the int does not affect the literal value of the int! */
+    int my_int;
+    my_int = 0xFFFFFFE2; // The 2's complement of -30.
 
-    /* float is symmetric in minimum/maximum values. */
-    /* Caveat std::numeric_limits<float>::min() is NOT the min of float BUT the min positive number
-       it can represents. (underflow?)
-        Due to the symmetry of floating point number, min of float is equal to the negative of it
-        max.
-    */
-    std::cout << "The positive min of float32: " << std::numeric_limits<float>::min() << std::endl;
-    std::cout << "The max of float32: " << std::numeric_limits<float>::max() << std::endl;
-    std::cout << "The real min of float32: " << -std::numeric_limits<float>::max() << std::endl;
+    unsigned int my_uint;
+    my_uint = 0x80000001; // 1000 0000 0000 0000 0000 0000 0000 0001 = 2147483648 + 1
+
+    int my_sint = 0x80000001; // - (0111 1111 1111 1111 1111 1111 1111 1110 + 1 = 2147483647)
+
+    std::cout << "my_int is " << my_int << std::endl;
+    std::cout << "my_uint is " << my_uint << std::endl;
+    std::cout << "my_sint is " << my_sint << std::endl;
+
     return 0;
 }
