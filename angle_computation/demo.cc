@@ -43,28 +43,33 @@ void deg_rad_convert_test()
 
 }
 
-#define DEBUG 1
+#define DEBUG 0
 
 bool
-get_angle_of_arc_by_DFS(const std::vector<float> &angle_set_rad, const float &angle_res_rad,
+get_arc_angle_by_df(std::vector<float> &angle_set_rad, const float &angle_res_rad,
         const float &max_arc_gap_rad, float &central_angle, float &coverage, float &real_max_gap_rad)
 {
     if (angle_set_rad.empty()) return false;
 
-    for (const auto &angle: angle_set_rad)
+    const float angle_rad_tol = 1e-4;
+    for (auto &angle: angle_set_rad)
     {
-        if (angle < -M_PI || angle > M_PI)
+        if ((angle < -M_PI && std::abs(angle + M_PI) > angle_rad_tol) ||
+                (angle > M_PI && std::abs(angle - M_PI) > angle_rad_tol))
         {
 #if DEBUG
             std::cout <<  angle << " is out of range!" << std::endl;
 #endif
             return false;
         }
+
+        angle = std::max<float>(-M_PI, angle);
+        angle = std::min<float>(M_PI, angle);
     }
 
     int max_arc_gap = max_arc_gap_rad / angle_res_rad;
     int sector_cnt = 2 * M_PI / angle_res_rad;
-    std::vector<bool> is_secotr_in_angle(sector_cnt, false);
+    std::vector<bool> is_sector_in_angle(sector_cnt, false);
 
 #if DEBUG
     std::cout << "max_arc_gap " << max_arc_gap << std::endl;
@@ -79,10 +84,10 @@ get_angle_of_arc_by_DFS(const std::vector<float> &angle_set_rad, const float &an
 #if DEBUG
         std::cout << "The sector index: " << idx << std::endl;
 #endif
-        if (true == is_secotr_in_angle[idx]) continue;
+        if (true == is_sector_in_angle[idx]) continue;
         ++occupied_sec;
         min_idx = std::min(min_idx, idx);
-        is_secotr_in_angle[idx] = true;
+        is_sector_in_angle[idx] = true;
     }
 
 #if DEBUG
@@ -92,57 +97,63 @@ get_angle_of_arc_by_DFS(const std::vector<float> &angle_set_rad, const float &an
 
     int covered_sec_cnt = 0;
     std::vector<bool> is_sector_visited(sector_cnt, false);
-
-    std::stack<int> sector_idx_stack;
-    sector_idx_stack.push(min_idx);
-    is_sector_visited[min_idx] = true;
-    ++covered_sec_cnt;
     int global_max_arc_gap = 0;
-    while(!sector_idx_stack.empty())
+
+    for (unsigned int idx = 0u; idx < is_sector_in_angle.size(); ++idx)
     {
-        int top_sec_idx = sector_idx_stack.top();
-        sector_idx_stack.pop();
-        std::vector<int> dirs = {-1, 1};
-        for (const auto & dir: dirs)
+        if (false == is_sector_in_angle[idx] || true == is_sector_visited[idx]) continue;
+
+        std::stack<int> sector_idx_stack;
+        sector_idx_stack.push(idx);
+        is_sector_visited[idx] = true;
+        ++covered_sec_cnt;
+
+        while(!sector_idx_stack.empty())
         {
-            int arc_gap = 0;
-            int curr_sec_idx = top_sec_idx;
-
-#if DEBUG
-            std::cout << "top_sec_idx" << top_sec_idx << std::endl;
-#endif
-            /* search for the neighbor in one direction. */
-            while (true)
+            int top_sec_idx = sector_idx_stack.top();
+            sector_idx_stack.pop();
+            std::vector<int> dirs = {-1, 1};
+            for (const auto & dir: dirs)
             {
-                curr_sec_idx = (curr_sec_idx + dir + sector_cnt) % sector_cnt;
+                int arc_gap = 0;
+                int curr_sec_idx = top_sec_idx;
+
 #if DEBUG
-                std::cout << "The dir " << dir << std::endl;
-                std::cout << "curr_sec_idx " << curr_sec_idx <<std::endl;
+                std::cout << "top_sec_idx" << top_sec_idx << std::endl;
+#endif
+                /* search for the neighbor in one direction. */
+                while (true)
+                {
+                    curr_sec_idx = (curr_sec_idx + dir + sector_cnt) % sector_cnt;
+#if DEBUG
+                    std::cout << "The dir " << dir << std::endl;
+                    std::cout << "curr_sec_idx " << curr_sec_idx <<std::endl;
 #endif
 
-                if (arc_gap > max_arc_gap || (true ==  is_sector_visited[curr_sec_idx]))
-                {
-                    break;
-                }
+                    if (arc_gap > max_arc_gap || (true ==  is_sector_visited[curr_sec_idx]))
+                    {
+                        break;
+                    }
 
-                /* arc_gap <= max_arc_gap */
-                if (true == is_secotr_in_angle[curr_sec_idx])
-                {
+                    /* arc_gap <= max_arc_gap */
+                    if (true == is_sector_in_angle[curr_sec_idx])
+                    {
 #if DEBUG
-                    std::cout << curr_sec_idx << "is found!" << std::endl;
+                        std::cout << curr_sec_idx << "is found!" << std::endl;
 #endif
-                    /* The neighbor is found! */
-                    sector_idx_stack.push(curr_sec_idx);
-                    /* We only keep track of occupied sectors. */
-                    is_sector_visited[curr_sec_idx] = true;
-                    covered_sec_cnt += 1 + arc_gap;
-                    global_max_arc_gap = std::max(arc_gap, global_max_arc_gap);
-                    break;
-                }
-                else
-                {
-                    /* Meet one gap. */
-                    ++arc_gap;
+                        /* The neighbor is found! */
+                        sector_idx_stack.push(curr_sec_idx);
+                        /* We only keep track of occupied sectors. */
+                        is_sector_visited[curr_sec_idx] = true;
+                        covered_sec_cnt += 1 + arc_gap;
+                        global_max_arc_gap = std::max(arc_gap, global_max_arc_gap);
+                        break;
+                    }
+                    else
+                    {
+                        /* Meet one gap. */
+                        ++arc_gap;
+                    }
                 }
             }
         }
@@ -168,7 +179,7 @@ get_angle_of_arc_by_DFS(const std::vector<float> &angle_set_rad, const float &an
 
 int main()
 {
-    // 40 deg
+    // 42 deg
     /* std::vector<float> angle_set_rad = */
     /*         {deg_to_rad(170.0f), deg_to_rad(172.0f), deg_to_rad(175.0f), deg_to_rad(178.0f), */
     /*          deg_to_rad(179.0f), deg_to_rad(-178.0f), deg_to_rad(-174.0f), deg_to_rad(-170.0f), */
@@ -207,21 +218,36 @@ int main()
     // 25 deg
     /* std::vector<float> angle_set_rad = {deg_to_rad(-10.0f), deg_to_rad(-8.0f), deg_to_rad(-5.0f), */
     /*         deg_to_rad(0.0f), deg_to_rad(4.0f), deg_to_rad(8.0f), deg_to_rad(15.0f), */
-            /* }; */
+    /*         }; */
 
-    // Big gap should lead to return of zero!
-    /* std::vector<float> angle_set_rad = {deg_to_rad(-10.0f), deg_to_rad(2.0f), deg_to_rad(4.0f), */
-    /*         deg_to_rad(8.0f), deg_to_rad(15.0f)}; */
+    // Big gap should lead to return the sum of two separate arc angles!
+    std::vector<float> angle_set_rad = {deg_to_rad(-20.0f), deg_to_rad(-15.0f), deg_to_rad(-10.0f),
+        deg_to_rad(2.0f), deg_to_rad(4.0f), deg_to_rad(8.0f), deg_to_rad(15.0f)};
 
     // Empty angle_res_rad
-    std::vector<float> angle_set_rad = {};
+    /* std::vector<float> angle_set_rad = {}; */
 
-    float angle_res_rad = deg_to_rad(0.5f);
+    // 215 deg
+    /* std::vector<float> angle_set_rad = */
+    /*         {deg_to_rad(0.0f), deg_to_rad(5.0f), deg_to_rad(10.0f), deg_to_rad(15.0f), */
+    /*             deg_to_rad(20.0f), deg_to_rad(27.0f), deg_to_rad(35.0f), deg_to_rad(40.0f), */
+    /*             deg_to_rad(45.0f), deg_to_rad(50.0f), deg_to_rad(55.0f), deg_to_rad(60.0f), */
+    /*             deg_to_rad(65.0f), deg_to_rad(70.0f), deg_to_rad(75.0f), deg_to_rad(80.0f), */
+    /*             deg_to_rad(85.0f), deg_to_rad(87.0f), deg_to_rad(90.0f), deg_to_rad(95.0f), */
+    /*             deg_to_rad(100.0f), deg_to_rad(105.0f), deg_to_rad(110.0f), deg_to_rad(115.0f), */
+    /*             deg_to_rad(120.0f), deg_to_rad(125.0f), deg_to_rad(130.0f), deg_to_rad(135.0f), */
+    /*             deg_to_rad(140.0f), deg_to_rad(145.0f), deg_to_rad(150.0f), deg_to_rad(155.0f), */
+    /*             deg_to_rad(160.0f), deg_to_rad(165.0f), deg_to_rad(170.0f), deg_to_rad(175.0f), */
+    /*             deg_to_rad(178.0f), deg_to_rad(-175.0f), deg_to_rad(-170.0f), deg_to_rad(-165.0f), */
+    /*             deg_to_rad(-160.0f), deg_to_rad(-155.0f), deg_to_rad(-150.0f), deg_to_rad(-145.0f), */
+    /*         }; */
+
+    float angle_res_rad = deg_to_rad(1.0f);
     float max_arc_gap_rad = deg_to_rad(10.0f);
     float central_angle = 0.0f;
     float angle_coverage = 0.0f;
     float real_max_gap_rad = 0.0f;
-    bool ret = get_angle_of_arc_by_DFS(angle_set_rad, angle_res_rad, max_arc_gap_rad, central_angle,
+    bool ret = get_arc_angle_by_df(angle_set_rad, angle_res_rad, max_arc_gap_rad, central_angle,
             angle_coverage, real_max_gap_rad);
 
     std::cout << "Succeed in computing the angle? " << (true == ret ? "Yes" : "No") << std::endl;
