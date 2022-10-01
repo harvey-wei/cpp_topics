@@ -71,6 +71,7 @@ int main()
    A: The MSB bit must be fixed at all times.
    Ref: https://www.codespeedy.com/right-shift-negative-numbers-in-cpp/
    Ref: https://stackoverflow.com/questions/4009885/arithmetic-bit-shift-on-a-signed-integer
+   The right shift a>>b is equivalent to a/2^b, rounded down (ie. towards negative infinity)
 
    Q: How does the computer store real numbers?
    A: 
