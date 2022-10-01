@@ -7,6 +7,7 @@ void print_8bit_bin(const char num)
     // int & 1 == 0 -> even otherwise odd
     // bitwise and & can identify the bit!
     // https://www.programiz.com/cpp-programming/bitwise-operators
+    std::cout << "num " << int(num) << "'s binary representation" << std::endl;
     for (int i = 7; i >= 0; --i)
     {
         if (num & (1 << i))
@@ -36,6 +37,17 @@ int main()
     /* std::cout << "num_ is "; */
     /* print_8bit_bin(num_); */
 
+    for (int i = 0; i < 8; ++i)
+    {
+        std::cout << "shift num to the right by " << i << "bits" << std::endl;
+        print_8bit_bin(num >> i);
+    }
+
+    std::cout << "After shifting num is  ";
+    print_8bit_bin(num);
+
+    std::cout << (-1 >> 10);
+
 
     return 0;
 }
@@ -54,6 +66,11 @@ int main()
 /*
    Q: How does the computer store integers?
    A: ref: https://en.wikipedia.org/wiki/Two%27s_complement
+
+   Q: Is the sign bit after bitwise operation fixed?
+   A: The MSB bit must be fixed at all times.
+   Ref: https://www.codespeedy.com/right-shift-negative-numbers-in-cpp/
+   Ref: https://stackoverflow.com/questions/4009885/arithmetic-bit-shift-on-a-signed-integer
 
    Q: How does the computer store real numbers?
    A: 
