@@ -3,6 +3,7 @@
 bool is_big_endian()
 {
     // ref: https://stackoverflow.com/questions/1001307/detecting-endianness-programmatically-in-a-c-program
+    // ref: https://www.tutorialspoint.com/cprogramming/c_unions.htm
     union {
         uint32_t i;
         char c[4];
