@@ -6,7 +6,7 @@ bool is_big_endian()
     // ref: https://www.tutorialspoint.com/cprogramming/c_unions.htm
     union {
         uint32_t i;
-        char c[4];
+        char c[4]; // 0 -3, low to high byte addresses.
     } bint = {0x01020304}; // 16909060
 
     /* Is big place value in the first byte? */

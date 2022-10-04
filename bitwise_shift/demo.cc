@@ -74,5 +74,7 @@ int main()
    The right shift a>>b is equivalent to a/2^b, rounded down (ie. towards negative infinity)
 
    Q: How does the computer store real numbers?
-   A: 
+   A: https://www.cs.mcgill.ca/~cs573/fall2002/notes/lec273/lecture3/#212
+
+   https://stackoverflow.com/questions/21819682/is-integer-multiplication-really-done-at-the-same-speed-as-addition-on-a-modern
 */
