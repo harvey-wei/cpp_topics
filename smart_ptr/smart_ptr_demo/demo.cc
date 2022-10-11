@@ -1,71 +1,72 @@
 #include <iostream>
+#include <cmath>
 using namespace std;
 
-// A generic smart pointer class
-// RAII: Resource Acquisition Is Initialization!
-template <class T>
-class SmartPtr {
-private:
-	T* ptr; // Actual pointer
+/*
+   Q: How to initialize the SmartPointer?
+   A: pass an address of data type/class or array of data type/ calss to it. Hence,
+   The address is returned by new operator. You need to define the constructor!
 
-public:
-	// Constructor
-	explicit SmartPtr(T* p = NULL) { ptr = p; }
+   Q: How to apply arrow operator and asterisk operator on the smart pointer?
+   A: As the smart pointer is a custom class, you must overload the * and ->. Note that the dot operator can not be overloaded. -> must
+   return the reference to the smart pointer since -> can only be called on pointer. A reference to
+   pointer is the best choice. Don't return the smart pointer iteself!
 
-	// Destructor
-	~SmartPtr() {
-        delete (ptr);
-        cout << "ptr is deleted" << std::endl;
-    }
+   * must return what the smart pointer points to. Therefore, you are better off returning the
+   reference to what the smart pointer points to.
 
-	// Overloading dereferencing operator return what is pointed by actual pointer.
-    // Otherwise, dereferencing behavior is undefined!
-	T& operator*() { return *ptr; }
-
-	// Overloading arrow operator so that
-	// members of T can be accessed
-	// like a pointer (useful if T represents
-	// a class or struct or union type). That is, smart_ptr->return the actual pointer.
-    // Otherwise, arrow operator's behavior is undefined!
-	T*& operator->() { return ptr; }
-
-    /** Note that you can not overload the dot operator!
-      */
-};
-
-class Point
+*/
+template<class T>
+class SmartPointer
 {
-    public:
-        Point(int x = 0, int y = 0):
-            x(x),
-            y(y)
-        {}
+    private:
+        // use to store the address returned by new operator when
+        // initialize the smart pointer.
+        T *ptr;
 
-        int x;
-        int y;
+    public:
+        // constructor to initialize the ptr with the address given by new.
+        SmartPointer(T* p = nullptr): ptr(p) {};
+
+        // Destructor to de-allocate the memory pointed to by ptr's address value.
+        ~SmartPointer()
+        {
+            /* Free up the memory pointed to by address held by ptr. */
+            delete ptr;
+            std::cout << "The memory is disposed of! " << std::endl;
+        }
+
+        // Overload arrow operator and make it return reference to ptr.
+        T*& operator->()
+        {
+            return ptr;
+        }
+
+        // Overload asterisk operator and make it return reference to what is
+        // pointed by ptr
+        T& operator*()
+        {
+            return *ptr;
+        }
 };
+
+struct Point
+{
+    int x, y;
+    Point(int x = 0, int y = 0) : x(x), y(y) {}
+};
+
+ double calc_dist()
+{
+    SmartPointer<Point> smart_ptr = new Point(10, 222);
+    std::cout << "x: " << smart_ptr->x << std::endl;
+    std::cout << "y: " << (*smart_ptr).y << std::endl;
+
+    return  sqrt(double(smart_ptr->x * smart_ptr->x + smart_ptr->y * smart_ptr->y));
+}
 
 int main()
 {
-    /* new returns a pointer of type int * here */
-	SmartPtr<int> ptr(new int());
-	*ptr = 20;
-	cout << *ptr << "\n";
-
-    SmartPtr<Point> pt_ptr(new Point(1, 2));
-    cout << pt_ptr->x << std::endl;
-
-	return 0;
+    double dist = calc_dist();
+    std::cout << "The length of the vector is " << dist << std::endl;
 }
-
-/* Q: Why is there an extra percent sign after the output?
-   A: Your shell (zsh) added it to indicate the output did not end with a newline character.
-   ref: https://stackoverflow.com/questions/53932577/why-is-there-an-extra-percent-sign-after-the-output
-
-   Q: What is the reference to pointer?
-   A: https://stackoverflow.com/questions/14016770/difference-between-t-and-t-c
-
-   https://www.geeksforgeeks.org/new-and-delete-operators-in-cpp-for-dynamic-memory/
-   Initialize memory: pointer-variable = new data-type(value);
-   Allocate a block of memory: pointer-variable = new data-type[size];
-*/
