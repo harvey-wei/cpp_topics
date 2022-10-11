@@ -46,7 +46,7 @@ void deg_rad_convert_test()
 #define DEBUG 0
 
 bool
-get_arc_angle_by_df(std::vector<float> &angle_set_rad, const float &angle_res_rad,
+get_arc_angle_by_dfs(std::vector<float> &angle_set_rad, const float &angle_res_rad,
         const float &max_arc_gap_rad, float &central_angle, float &coverage, float &real_max_gap_rad)
 {
     if (angle_set_rad.empty()) return false;
@@ -247,7 +247,7 @@ int main()
     float central_angle = 0.0f;
     float angle_coverage = 0.0f;
     float real_max_gap_rad = 0.0f;
-    bool ret = get_arc_angle_by_df(angle_set_rad, angle_res_rad, max_arc_gap_rad, central_angle,
+    bool ret = get_arc_angle_by_dfs(angle_set_rad, angle_res_rad, max_arc_gap_rad, central_angle,
             angle_coverage, real_max_gap_rad);
 
     std::cout << "Succeed in computing the angle? " << (true == ret ? "Yes" : "No") << std::endl;
