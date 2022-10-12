@@ -10,7 +10,7 @@ Hence, for friend class member function, we need include the header file!!
 class Match
 {
 	public:
-		void print_time(Time &t);   
+		void print_time(Time &t);
 };
 
 #endif

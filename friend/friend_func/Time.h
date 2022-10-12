@@ -47,7 +47,7 @@ class Time
 		int m_int_hour;
 		int m_int_minute;
 		int m_int_second;
-		
+
 
 	friend void Match::print_time(Time &t);   // need definition of Match so include!!!
 	// Friend can be put anywhere!!!!

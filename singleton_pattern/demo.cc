@@ -26,13 +26,17 @@ public:
      * Singletons should not be cloneable.
      * delete the copy constructor.
      * https://stackoverflow.com/questions/5513881/meaning-of-delete-after-function-declaration
+     * delete means prohibiting!
      */
-    Singleton(Singleton &other) = delete;
+    Singleton(const Singleton &other) = delete;
 
     /**
      * Singletons should not be assignable.
+     * Return void or reference to class object?
+     * https://www.learncpp.com/cpp-tutorial/overloading-the-assignment-operator/
      */
     void operator=(const Singleton &) = delete;
+    /* Singleton& operator=(const Singleton &) = delete; */
 
     static Singleton & GetInstance(const std::string& value);
 

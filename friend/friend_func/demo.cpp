@@ -18,12 +18,12 @@ using namespace std;
 /* void print_time(Time &t); */
 int main()
 {
-	Time t(6, 34, 25);
-	/* print_time(t); */
-	Match m;
-	m.print_time(t);
+    Time t(6, 34, 25);
+    /* print_time(t); */
+    Match m;
+    m.print_time(t);
 
-	return 0;
+    return 0;
 }
 
 /* void print_time(Time &t) */
@@ -32,3 +32,16 @@ int main()
 /* 	// t.private_data_members and t.private_member_func are legal!!!! */
 /* 	cout << t.m_int_hour << ":" << t.m_int_minute << ":" << t.m_int_second << endl; */
 /* } */
+
+/**
+  * https://www.programiz.com/cpp-programming/friend-function-class
+  * https://www.geeksforgeeks.org/friend-class-function-cpp/
+  * Q: Why to use friend?
+  * A: Normally, the protected and private members are inaccessible from outside. However, the
+  *    friend class and friend break this rule. A friend function can access the private and
+  *    protected member of a class.
+  * Ref: https://leimao.github.io/blog/CMake-Public-Private-Interface/
+  * When a class is declared as a friend class,
+  * all the member functions of the friend class become friend functions.
+  *
+  */
