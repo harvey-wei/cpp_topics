@@ -1,4 +1,6 @@
 #include <iostream>
+#include <string>
+#include <sstream>
 using namespace std;
 
 
@@ -82,9 +84,106 @@ class Counter
         unsigned int m_counter;
 };
 
+template<class T>
+class Shared_Point
+{
+    public:
+        // Constructor receive raw pointer returned by new operator
+        // Note only be used one time.
+        explicit Shared_Point(T * ptr = nullptr)
+            :m_ptr(ptr), m_ref_cnt(new Counter())
+        {
+            if (nullptr != m_ptr) ++(*m_ref_cnt);
+        }
+
+        // Copy Constructor which can be used multiple times.
+        Shared_Point(const Shared_Point<T> &obj)
+        {
+            m_ptr = obj.m_ptr;
+            m_ref_cnt = obj.m_ref_cnt;
+            ++(*m_ref_cnt);
+        }
+
+        // Get the current reference count
+        unsigned int get_ref_cnt()
+        {
+            return m_ref_cnt->get();
+        }
+
+        // Get the pointer
+        T* get_ptr()
+        {
+            return m_ptr;
+        }
+
+        // Recall that smart pointer should also overload dereferencing and arrow operator.
+        // Overload * to return the reference to the object
+        T& operator*()
+        {
+            return *m_ptr;
+        }
+
+        // Overload -> to return the reference to const pointer to the object
+        T* const & operator->()
+        {
+            return m_ptr;
+        }
+
+        // Caveat: dot operator is unable to be overloaded.
+
+        // Destructor. Free up the resource pointed to by m_ptr if reference cnt reaches zero.
+        ~Shared_Point()
+        {
+            --(*m_ref_cnt);
+
+            if (0 == m_ref_cnt->get())
+            {
+                delete m_ptr;
+
+                // Don't forget to release the memory of the reference counter.
+                delete m_ref_cnt;
+            }
+        }
+
+
+    private:
+        // m_ptr stores the raw pointer which is shared by multiple Shared_Point.
+        T * m_ptr;
+
+        // Record how many Shared_Point objects is the raw pointer shared by.
+        Counter * m_ref_cnt;
+
+    // Overload stream insertion operator << as a global function whose left hand operand
+    // is ostream &os and right hand operand is the second argument, namely ptr.
+    // Usage: cout << shared_ptr objcet
+    friend ostream & operator<<(ostream &os, Shared_Point<T> &ptr)
+    {
+        os << "Address pointed: " <<  ptr.get_ptr() << std::endl;
+        os << "Reference Count: " << ptr.get_ref_cnt << std::endl;
+    }
+};
+
+
+/* The first argument time is the left hand operand of + while the second argument is the right
+ * hand operand of +.
+ * Hence, string + int gives rise to error!
+ **/
+string operator+(int time, string suf)
+{
+    stringstream ss;
+    ss << time << suf;
+
+    return ss.str();
+}
 
 int main()
 {
+    int hour = 9;
+    string suffix = "p.m.";
+
+    string time = hour + suffix;
+    /* string time_ = suffix + hour;  // Error!*/
+
     return 0;
 }
 
@@ -100,7 +199,12 @@ int main()
   *    “ob1 + ob2” (let ob1 and ob2 be objects of two different classes). To make this statement
   *    compile, we must overload ‘+’ in a class of ‘ob1’ or make ‘+’ a global function.
   * Ref: https://www.geeksforgeeks.org/overloading-stream-insertion-operators-c/
+  * Ref: https://www.freecodecamp.org/news/how-to-overload-operators-in-cplusplus/
   *
   * Q: Why to use friend << ?
   * Ref: https://leimao.github.io/blog/CMake-Public-Private-Interface/
+  *
+  * Q: For overloaded binary operators, which argument is the left hand side and which is the right
+  * hand side operand?
+  * Ref: https://ee.usc.edu/~redekopp/cs104/slides/L08a_OperatorOverloading.pdf
   */
