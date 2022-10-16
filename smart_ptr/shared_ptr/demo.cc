@@ -136,13 +136,15 @@ class Shared_Point
         {
             --(*m_ref_cnt);
 
+            cout << "The shared pointer is released!" << endl;
+
             if (0 == m_ref_cnt->get())
             {
                 delete m_ptr;
 
                 // Don't forget to release the memory of the reference counter.
                 delete m_ref_cnt;
-                cout << "The raw pointer contained in shared pointer is deleted! " << endl;
+                cout << "The raw pointer contained in shared pointer is deleted!" << endl;
             }
         }
 
@@ -160,7 +162,9 @@ class Shared_Point
     friend ostream & operator<<(ostream &os, Shared_Point<T> &ptr)
     {
         os << "Address pointed: " <<  ptr.get_ptr() << std::endl;
-        os << "Reference Count: " << ptr.get_ref_cnt << std::endl;
+        os << "Reference Count: " << ptr.get_ref_cnt() << std::endl;
+
+        return os;
     }
 };
 
@@ -191,9 +195,14 @@ int main()
     // new return an universal pointer and then implicitly type-cast!
     Shared_Point<int> ptr_one(new int(132));
     *ptr_one = 100;
+    cout << ptr_one;
 
+
+    // Invoke the copy constructor to pointer to what ptr_one points to!
+    // Hence, the raw pointer is shared by ptr_one and ptr_two.
     Shared_Point<int> ptr_two(ptr_one);
     *ptr_two = 200;
+    cout << ptr_two;
 
     cout << "ptr_two's object is " << *ptr_two << endl;
 

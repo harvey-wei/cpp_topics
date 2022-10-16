@@ -42,6 +42,7 @@ int main()
   * Many shared_ptr can point to a single resource. shared_ptr maintains reference count
   * for this propose. when all shared_ptr pointers pointing to resource goes out of scope the resource
   * is destroyed.
+  * The reference counter increments each time the 
   * ref: https://docs.microsoft.com/en-us/cpp/cpp/how-to-create-and-use-shared-ptr-instances?view=msvc-170
   * ref: https://www.geeksforgeeks.org/auto_ptr-unique_ptr-shared_ptr-weak_ptr-2/
   */
