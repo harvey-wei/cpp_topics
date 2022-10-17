@@ -68,7 +68,7 @@ get_arc_angle_by_dfs(std::vector<float> &angle_set_rad, const float &angle_res_r
     }
 
     int max_arc_gap = max_arc_gap_rad / angle_res_rad;
-    int sector_cnt = 2 * M_PI / angle_res_rad;
+    int sector_cnt = 2 * M_PI / angle_res_rad + 1;
     std::vector<bool> is_sector_in_angle(sector_cnt, false);
 
 #if DEBUG
@@ -80,7 +80,7 @@ get_arc_angle_by_dfs(std::vector<float> &angle_set_rad, const float &angle_res_r
     int occupied_sec = 0;
     for (const auto &angle: angle_set_rad)
     {
-        int idx = (angle + M_PI) / angle_res_rad;
+        int idx = (angle + M_PI) / angle_res_rad + 0.5;
 #if DEBUG
         std::cout << "The sector index: " << idx << std::endl;
 #endif
@@ -205,15 +205,15 @@ int main()
     /*             deg_to_rad(120.0f), deg_to_rad(125.0f), deg_to_rad(130.0f), deg_to_rad(135.0f), */
     /*         }; */
     // 135 but negative
-    /* std::vector<float> angle_set_rad = */
-    /*         {deg_to_rad(0.0f), deg_to_rad(-5.0f), deg_to_rad(-10.0f), deg_to_rad(-15.0f), */
-    /*             deg_to_rad(-20.0f), deg_to_rad(-27.0f), deg_to_rad(-35.0f), deg_to_rad(-40.0f), */
-    /*             deg_to_rad(-45.0f), deg_to_rad(-50.0f), deg_to_rad(-55.0f), deg_to_rad(-60.0f), */
-    /*             deg_to_rad(-65.0f), deg_to_rad(-70.0f), deg_to_rad(-75.0f), deg_to_rad(-80.0f), */
-    /*             deg_to_rad(-85.0f), deg_to_rad(-87.0f), deg_to_rad(-90.0f), deg_to_rad(-95.0f), */
-    /*             deg_to_rad(-100.0f), deg_to_rad(-105.0f), deg_to_rad(-110.0f), deg_to_rad(-115.0f), */
-    /*             deg_to_rad(-120.0f), deg_to_rad(-125.0f), deg_to_rad(-130.0f), deg_to_rad(-135.0f), */
-    /*         }; */
+    std::vector<float> angle_set_rad =
+            {deg_to_rad(0.0f), deg_to_rad(-5.0f), deg_to_rad(-10.0f), deg_to_rad(-15.0f),
+                deg_to_rad(-20.0f), deg_to_rad(-27.0f), deg_to_rad(-35.0f), deg_to_rad(-40.0f),
+                deg_to_rad(-45.0f), deg_to_rad(-50.0f), deg_to_rad(-55.0f), deg_to_rad(-60.0f),
+                deg_to_rad(-65.0f), deg_to_rad(-70.0f), deg_to_rad(-75.0f), deg_to_rad(-80.0f),
+                deg_to_rad(-85.0f), deg_to_rad(-87.0f), deg_to_rad(-90.0f), deg_to_rad(-95.0f),
+                deg_to_rad(-100.0f), deg_to_rad(-105.0f), deg_to_rad(-110.0f), deg_to_rad(-115.0f),
+                deg_to_rad(-120.0f), deg_to_rad(-125.0f), deg_to_rad(-130.0f), deg_to_rad(-135.0f),
+            };
 
     // 25 deg
     /* std::vector<float> angle_set_rad = {deg_to_rad(-10.0f), deg_to_rad(-8.0f), deg_to_rad(-5.0f), */
@@ -221,8 +221,8 @@ int main()
     /*         }; */
 
     // Big gap should lead to return the sum of two separate arc angles!
-    std::vector<float> angle_set_rad = {deg_to_rad(-20.0f), deg_to_rad(-15.0f), deg_to_rad(-10.0f),
-        deg_to_rad(2.0f), deg_to_rad(4.0f), deg_to_rad(8.0f), deg_to_rad(15.0f)};
+    /* std::vector<float> angle_set_rad = {deg_to_rad(-20.0f), deg_to_rad(-15.0f), deg_to_rad(-10.0f), */
+    /*     deg_to_rad(2.0f), deg_to_rad(4.0f), deg_to_rad(8.0f), deg_to_rad(15.0f)}; */
 
     // Empty angle_res_rad
     /* std::vector<float> angle_set_rad = {}; */
