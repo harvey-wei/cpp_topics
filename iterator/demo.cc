@@ -1,6 +1,7 @@
 // C++ program to demonstrate iterators
 
 #include <iostream>
+#include <algorithm>
 #include <vector>
 using namespace std;
 int main()
@@ -42,5 +43,13 @@ int main()
 	return 0;
 }
 
-/** ref: https://www.geeksforgeeks.org/introduction-iterators-c/
+/**  ref: https://www.geeksforgeeks.org/introduction-iterators-c/
+  *  A: list, map, multimap, set and multiset support bidirectional iterators
+  *  support equality/inequality, dereferencing, increment/decrement, and swappable but DON'T HAVE
+  *  arithmetics!
+  *  ref: https://www.geeksforgeeks.org/bidirectional-iterators-in-cpp/
+  *
+  *  B: vector and deque have random access iterators  which support all of bidirectional iterators
+  *  and iterator arithmetics.
+  *  ref: https://www.geeksforgeeks.org/random-access-iterators-in-cpp/
   */
