@@ -71,6 +71,7 @@ int main ()
 
     std::cout << "Not throw the bac_alloc" << std::endl;
 
+
     return 0;
 }
 
