@@ -25,10 +25,5 @@ int main() {
     cout << str << endl;
     cout << str.substr(1, 3) << endl;
 
-
-
-
-
-    
 return 0;
 }

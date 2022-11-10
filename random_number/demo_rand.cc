@@ -32,7 +32,7 @@ int main()
      // Use current time as seed for random generator
     /* time_t curr_time; */
     srand(time(nullptr));
-    /* To get the uniform integer in the range of 0 to 10. */
+    /* To get the uniform integer in the range of 0 to 10.[0, 10) */
 	for (int i = 0; i < 5; i++)
 		std::cout << rand() % 10 << " ";
     std::cout << std::endl;

@@ -17,8 +17,7 @@ int main_a1()
 	cout << s3 << endl;
 	cout << s4 << endl;
 	cout << s5 << endl;
-		
-	
+
 	return 0;
 }
 

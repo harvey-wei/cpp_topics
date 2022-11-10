@@ -22,6 +22,7 @@ Tank::~Tank()
 
 // non-static member function can access the static function / staic data
 // static functon lives longer than non-staic member functon in the memory!!
+// static varibles are shared by all instances.
 void Tank::fire()
 {
 	cout << "Tank -- Fire" << endl;
@@ -29,6 +30,7 @@ void Tank::fire()
 }
 
 // static member function can not access the non-staic function / non-static variables
+// because static member function has no this pointer
 int Tank::get_count()  // no static longer!!!
 {
 	return s_int_count;

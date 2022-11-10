@@ -39,7 +39,7 @@ int main()
         cout<<" "<<demo[i];
     }
 
-    /* By default, std::sort() sort the data in non*/
+    /* By default, std::sort() sort the data in non-descending order. */
     std::sort(demo, demo + len); //Sorting demo array in-place
 
     cout<<"\n\nAfter sorting array : ";
@@ -64,6 +64,10 @@ int main()
     std::sort(myvector.begin(), myvector.end(), my_functor);
     cout<<"\n\nAfter sorting array : ";
     print_vec(myvector);
+
+
+    string s = "edcba";
+    std::sort(s.begin(), s.end());
 
     return 0;
 }

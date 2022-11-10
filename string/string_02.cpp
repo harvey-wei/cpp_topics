@@ -12,9 +12,16 @@ int main()
     getline(cin, name);
     cout << "The number of chars in name: " << name.size() << endl;
     //getline(cin, name);  // both carriage return and other string will be accepted
-    for (char ch : name) {
-        cout << ch << endl;
+    /* for (char ch : name) { */
+    /*     cout << ch << endl; */
+    /* } */
+
+    for (uint i = 0; i < name.size(); ++i)
+    {
+        cout << name[i] << std::endl;
     }
+
+
     if(name.empty())
     {
         cout << "The input is empty" <<endl;
