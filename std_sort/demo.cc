@@ -57,11 +57,11 @@ int main()
 
     /* std::sort(myvector.begin(), myvector.end(), greater<int>()); */
     /* Lambda function */
-    /* std::sort(myvector.begin(), myvector.end(), */
-    /*         [](const int &lhs, const int &rhs){ return lhs > rhs;}); */
+    std::sort(myvector.begin(), myvector.end(),
+            [](const int &lhs, const int &rhs){ return lhs > rhs;});
     /* std::sort(myvector.begin(), myvector.end(), my_func); */
     my_class my_functor;
-    std::sort(myvector.begin(), myvector.end(), my_functor);
+    /* std::sort(myvector.begin(), myvector.end(), my_functor); */
     cout<<"\n\nAfter sorting array : ";
     print_vec(myvector);
 

@@ -12,7 +12,7 @@ void abssort(float* x, unsigned int n)
             // lambda expression begins
             // define the less than operator
             // smaller is sorted before the larger.
-            [](float a, float b) {
+            [](const float& a, const float& b) {
                 return (std::abs(a) < std::abs(b));
             });
 }
