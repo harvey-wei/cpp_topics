@@ -25,9 +25,9 @@ class My_Array
 		My_Array();
 		virtual ~My_Array();  // It is good practice to declare destructor as virtual
 		void display();
-	
+
 	private:
-		T * m_ptr_Arr;	
+		T * m_ptr_Arr;
 };
 
 
@@ -46,7 +46,7 @@ My_Array<T, KSize, KVal>::My_Array()
 template <typename T, int KSize, int KVal>
 My_Array<T, KSize, KVal>::~My_Array()
 {
-	// relese the heap space 
+	// relese the heap space
 	delete m_ptr_Arr;
 	m_ptr_Arr = nullptr;
 }

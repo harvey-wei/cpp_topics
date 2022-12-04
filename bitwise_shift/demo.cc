@@ -30,7 +30,7 @@ int main()
     std::cout << "num is ";
     print_8bit_bin(num);
 
-    // bitwise operator is not in-place! 
+    // bitwise operator is not in-place!
     /* char num_ = num << 2; */
     /* std::cout << "num is "; */
     /* print_8bit_bin(num); */

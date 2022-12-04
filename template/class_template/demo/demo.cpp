@@ -5,7 +5,7 @@ Q1: How to define a class template?
    template <typename T, class U, int KSize>
    void MyArray<T, U, KSize>::display()  // Class Name must be followed by a pair of angle bracket enclosing type variable
    {
-	
+
    }
 Q2: How to use the class template?
 ClassName must be followed by a pair of angle brackets enclosing a list of actual arguments (values of the template parameters!!!)
@@ -19,7 +19,7 @@ using namespace std;
 
 int main()
 {
-	My_Array<int, 5, 6> arr; 
+	My_Array<int, 5, 6> arr;
 	arr.display(); // Since we have instantiated the class template, no need to add <> again!!
 
 

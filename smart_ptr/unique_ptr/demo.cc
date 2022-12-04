@@ -20,7 +20,7 @@ int main()
 	cout << p1.get() << endl;
 
 	// transfers ownership to p2
-	unique_ptr<A> p2 = move(p1);
+	unique_ptr<A> p2 = move(p1);  // move instead of copy constructor
 	p2->show();
 	cout << p1.get() << endl;
 	cout << p2.get() << endl;

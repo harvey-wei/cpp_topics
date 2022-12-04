@@ -2,7 +2,7 @@
 
 int main()
 {
-    // get the round-down halve of negative integers, you are better off add 1 before shifting! 
+    // get the round-down halve of negative integers, you are better off add 1 before shifting!
     int a = -1020;
     a = (a + 1) >> 1;
     std::cout << "Half of a: " << a << std::endl;

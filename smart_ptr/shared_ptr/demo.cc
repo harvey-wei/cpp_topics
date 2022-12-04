@@ -198,8 +198,7 @@ int main()
     cout << ptr_one;
 
 
-    // Invoke the copy constructor to pointer to what ptr_one points to!
-    // Hence, the raw pointer is shared by ptr_one and ptr_two.
+    // Invoke the copy constructor to pointer to what ptr_one points to! Hence, the raw pointer is shared by ptr_one and ptr_two.
     Shared_Point<int> ptr_two(ptr_one);
     *ptr_two = 200;
     cout << ptr_two;

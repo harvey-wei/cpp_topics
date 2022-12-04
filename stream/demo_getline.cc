@@ -8,6 +8,7 @@ int main()
 {
     string serialize_str = "6, 7, 8, #, #, 20, #, 30, #";
 
+    /* (>>) is an extraction operator. It can be used more than once to accept multiple inputs. It differentiates the multiple inputs through spaces or the next line.  */
     /* How to read number and # in serialize_str sequentially? */
     /* Method 1: Read character by character. */
     string curr = ""; // empty string
@@ -73,7 +74,8 @@ int main()
     std::cout << std::endl;
 
     /* Method 2: use getline and stringstream.
-       We can use getline(istream& is, string& str, char delim) function to split a sentence on the basis of a character.
+       We can use getline(istream& is, string& str, char delim) function to split a sentence on
+       the basis of a character.
        is: The object from which chars are extracted.
        str: string object where the extracted chars are stored.
        return is is!

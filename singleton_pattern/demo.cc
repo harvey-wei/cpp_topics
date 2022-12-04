@@ -3,6 +3,47 @@
 #include <thread>
 #include <pthread.h>
 
+class My_Singleton
+{
+    private:
+        /* Key is to create instance from get_instance. */
+        /* Hence, the constructor must private or protected. */
+        My_Singleton(const std::string _value): value(_value)
+        {
+
+        };
+
+        std::string value;
+
+    public:
+        /* The lhs is the instance on which the = is assigned.
+           Hence, return void
+        */
+        void operator=(const My_Singleton& rhs) = delete;  // Disallow assignment
+
+        /* copy constuctor take as input the const reference to rhs. */
+        My_Singleton(const My_Singleton& rhs) = delete; // Disallow copying
+
+        /* The key is to create instance by this function. */
+        /*
+           \param[out] My_Singleton&
+           static make the get_instance have no this pointer.
+           // static int get_count() const is illegal because static member function has no this pointer !!!!
+        */
+        static My_Singleton& get_instance(const std::string _value)
+        {
+            static My_Singleton inst(_value);
+
+            return inst;
+        }
+
+        void print_val()
+        {
+            std::cout << value << std::endl;
+        }
+
+};
+
 /**
  * The Singleton class defines the `GetInstance` method that serves as an
  * alternative to constructor and lets clients access the same instance of this
@@ -57,6 +98,7 @@ public:
 
 /**
  * Static methods should be defined outside the class.
+ * static data member must initialized outside the calss! But you can declare inside class.
  */
 Singleton &Singleton::GetInstance(const std::string& value)
 {
@@ -100,6 +142,11 @@ int main()
     std::cout << singleton.value() << "\n";
     Singleton &singleton_two = Singleton::GetInstance("AAA");
     std::cout << singleton_two.value() << "\n";
+
+    My_Singleton& my_inst = My_Singleton::get_instance("My_Singleton");
+    my_inst.print_val();
+    My_Singleton& my_inst_two = My_Singleton::get_instance("My_Singleton Two");
+    my_inst_two.print_val();
 
     return 0;
 }

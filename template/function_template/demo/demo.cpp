@@ -66,17 +66,17 @@ void display(T a)
 {
 	for(int i(0); i < KSize; i++)
 	{
-		cout << a << endl;	
+		cout << a << endl;
 	}
 }
-// All above function templates will be overloaded once template parameters are instantiated!!!
 
+// All above function templates will be overloaded once template parameters are instantiated!!!
 int main()
 {
 	/* display<int>(10);  // If <int> is omitted,then compiler will automatically imply it. It is strongly recommended to state the template parameter(data type or variable) explicitly. */
 	/* display<double>(10.89); */
 	/* display<string>("Generic Functions!"); */
-	
+
 	display<int, double>(5, 10.45);
 	display<int, 5>(100);
 
