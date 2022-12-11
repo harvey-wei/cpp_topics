@@ -1,18 +1,20 @@
 #include <iostream>
 using namespace std;
 
-template <class T, typename U = char, int size = 10> class A {
-public:
-    T x;
-    U y;
-    A() { cout << "Constructor Called" << endl;
-    cout << "size: " << size << std::endl;
-    }
+template <class T = char, typename U = char, int size = 10>
+class A
+{
+    public:
+        T x;
+        U y;
+        A() { cout << "Constructor Called" << endl;
+        cout << "size: " << size << std::endl;
+        }
 };
 
 int main()
 {
-    A<char> a; // This will call A<char, char>
+    A<> a; // This will call A<char, char>
     return 0;
 }
 

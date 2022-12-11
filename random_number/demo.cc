@@ -1,20 +1,27 @@
 #include <random>
 #include <iostream>
 
+
 int main() {
     /* step 1: set up an engine */
-    std::random_device rd;
-    std::mt19937 rng(rd()); // mt stands for Mersenne twister.
+    /* std::random_device rd; */
+    /* std::random_device() creates an object
+       (std::random_device())() generates a uniformly distributed random number as seeding value of std::mt19937
+       std::mt19937 generates almost the uniformly distributed random value.
+       rng is a functor to generate uniformly distributed random number.
+    */
+    std::mt19937 rng((std::random_device())()); // mt stands for Mersenne twister.
 
     /* step 2: specify the distribution type. */
-    std::uniform_int_distribution<> uniform_int_dist(1, 6);  // inclusive
-    std::uniform_real_distribution<> uniform_real_dist(10, 20); // inclusive
-    std::normal_distribution<> normal_dist(0, 1); // mean = 1, std_dev = 1
+    std::uniform_int_distribution<int> uniform_int_dist(1, 6);  // inclusive
+    std::uniform_real_distribution<double> uniform_real_dist(10, 20); // inclusive
+    std::normal_distribution<double> normal_dist(0, 1); // mean = 1, std_dev = 1
 
     /* step 3: get random numbers */
     const int cnt = 5;
     for (int i = 0; i < cnt; ++i)
     {
+        /* Inverse transform sampling to generate target distributed random number. */
         std::cout << uniform_int_dist(rng) << " ";
     }
 
