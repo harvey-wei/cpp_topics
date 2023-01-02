@@ -44,6 +44,72 @@ class Test<int>
         }
 };
 
+/**
+ * \topic Partial specialization of template.
+ * \note Partial specialization of a function template, whether it is member function template or
+ *       stand-alone function template, is not allowed by the Standard.
+ *       But you can partially specialize the class template itself.
+ * \ref https://stackoverflow.com/questions/6138439/understanding-simple-c-partial-template-specialization
+ */
+
+/* primary template */
+template<class A, typename B>
+class Thing
+{
+
+};
+
+template<class A>
+class Thing<A, int> /* partial specialization of the class template. */
+{
+    int do_something();
+};
+
+template<class A>
+int Thing<A, int>::do_something()
+{
+    std::cout << "Partial specialization Thing<A, int>" << std::endl;
+}
+
+/**
+ * \note The primary version handles all the cases where T is not a pointer!
+ */
+template <typename T>
+struct is_pointer
+{
+    static const bool value = false;
+};
+
+/**
+ * \note A partial specialization handles all the cases where T is a pointer.
+ */
+template <typename T>
+struct is_pointer<T*>
+{
+    static const bool value = true;
+};
+
+/* The default template. */
+template <typename T>
+struct remove_bounds
+{
+    typedef T type;
+};
+
+/**
+ * \note the number of template parameters in a partial specialisation does not have to match the
+ *       number in the default template.
+ *       However, the number of parameters that appear after the class name do have to match the
+ *       number and type of the parameters in the default template.
+ */
+template <typename T, std::size_t N>  /* The number of template parameters does not match the
+                                         default template. */
+struct remove_bounds<T[N]> /* But the number of parameters after class name equals the number and
+                              type of the parameters in the default template. */
+{
+    typedef T type;
+};
+
 int main()
 {
     std::vector<int> int_vec = {1, 2, 3, 4, 5};

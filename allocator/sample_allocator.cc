@@ -67,4 +67,6 @@ int main()
 /**
  * new vs operator new
  * Ref: https://www.geeksforgeeks.org/new-vs-operator-new-in-cpp/
+ * The best tutorial: https://www.codeproject.com/Articles/4795/C-Standard-Allocator-An-Introduction-and-Implement
+ * Good tutorial: https://docs.ros.org/en/foxy/Tutorials/Advanced/Allocator-Template-Tutorial.html
  */

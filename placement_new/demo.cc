@@ -88,19 +88,21 @@ int main()
     /*
        Buffer on stack;
     */
-    const int buffer_size = 100;
-    unsigned char buffer[100];
+    const int buffer_size = sizeof(Complex) * 2;
+    unsigned char buffer[buffer_size];
 
     Complex* pc = new Complex(4.2, 5.3);
     Complex* pd = new Complex[2];  // array of 2 complex object heap memory
 
     Complex* pe = new (buffer) Complex(2.6, 3.9);
+    Complex* pe2 = new (buffer + sizeof(Complex)) Complex(3.0, 5.0);
 
     // use objects
     pc -> print();
     pd[0].print();
     pd[1].print();
     pe->print();
+    pe2->print();
 
     // Release objects
     // calls destructor and then release memory
@@ -113,6 +115,7 @@ int main()
 
     // No delete : Explicit call to Destructor.
     pe->~Complex();
+    pe2->~Complex();
 
 	return 0;
 }
