@@ -23,9 +23,9 @@ find_package(OpenCV REQUIRED)
 include_directories(${OpenCV_INCLUDE_DIRS})
 
 # # Install by brew install boost
-# link_directories("/opt/homebrew/Cellar/boost/1.80.0/lib")
-# include_directories("/opt/homebrew/Cellar/boost/1.80.0/include")
+link_directories("/opt/homebrew/Cellar/boost/1.80.0/lib")
+include_directories("/opt/homebrew/Cellar/boost/1.80.0/include")
 
 add_executable(a.out demo.cc)
 # target_link_libraries(a.out ${PCL_LIBRARIES} ${OpenCV_LIBS})
-target_link_libraries(a.out ${PCL_LIBRARIES} ${OpenCV_LIBS})
+target_link_libraries(a.out ${PCL_LIBRARIES} ${OpenCV_LIBS} ${Boost_LIBRARIES})
