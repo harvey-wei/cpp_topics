@@ -8,4 +8,4 @@ class Infantry : public Soldier
 	public:
 		void attack();
 };
-#endif 
+#endif

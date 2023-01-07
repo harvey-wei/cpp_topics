@@ -1,6 +1,8 @@
 #include <iostream>
 #include <string>
 #include <sstream>
+#include <vector>
+#include <queue>
 using namespace std;
 
 
@@ -205,6 +207,10 @@ int main()
 
     cout << "ptr_two's object is " << *ptr_two << endl;
 
+
+    std::cout << "white space" << std::endl;
+
+    std::cout << "" << std::endl;
 
     return 0;
 }

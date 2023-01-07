@@ -11,6 +11,15 @@ const int & front(vector<int>& vec) {
 	return vec[0];
 }
 
+void swap_element(std::vector<int>& vec, int i, int j)
+{
+    int temp = vec[i];
+    vec[i] = vec[j];
+    vec[j] = temp;
+
+    return;
+}
+
 int main()
 {
      const Line *p = new Line(1,2,3,4); // due to the constructor,() is needed/required/necessary
@@ -31,6 +40,8 @@ int main()
 	vector<int> vec = {1, 2, 3, 4};
 
 	cout << front(vec) << endl;
+
+    swap_element(vec, 0, 2);
 
     return 0;
 }

@@ -1,7 +1,7 @@
 #ifndef LINE_H
 #define LINE_H
 #include "Coordinate.h" // Note that it must be included!!
-class Line 
+class Line
 {
 	public:
 		Line(int _Ax, int _Ay, int _Bx, int _By);
@@ -13,6 +13,6 @@ class Line
 	private:
 		/* const Coordinate m_coor_A;  // instance of class Coordinate as the data member in another Class, especially for "object containing objects!!!!" */
 		Coordinate m_coor_A;
-		Coordinate m_coor_B;  // Note that here creation of Coordinate must comply with the corresponding constructor!!! constructor with default values may be a workaround!! 
+		Coordinate m_coor_B;  // Note that here creation of Coordinate must comply with the corresponding constructor!!! constructor with default values may be a workaround!!
 };
 #endif
