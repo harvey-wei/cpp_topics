@@ -67,7 +67,7 @@ int main()
 {
 	try
 	{
-		test();	
+		test();
 	}
 	/* catch(int)  // int match 10 or other integers, catch(int) can not catch double, then exception will be submitted to the caller at higher level or OS */
 	/* catch(double &e) // What is thrown is assigned to reference e!! */
