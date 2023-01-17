@@ -6,6 +6,11 @@ set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 
 # Don't forget to add filesystem as COMPONENT of Boost
 find_package(Boost REQUIRED COMPONENTS filesystem)
+# find_package(Boost 1.3 REQUIRED) # find no individual module
+
+message(STATUS "Boost_LIBRARIES ${Boost_LIBRARIES}")
+message(STATUS "Boost_VERSION ${Boost_VERSION}")
+message(STATUS "Boost_DEFINITIONS ${Boost_DEFINITIONS}")
 
 include_directories(${Boost_INCLUDE_DIRS})
 add_executable(a.out demo.cc)
