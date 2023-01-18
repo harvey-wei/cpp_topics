@@ -9,7 +9,7 @@ find_package(Boost REQUIRED COMPONENTS filesystem)
 
 if (Boost_FOUND)
     include_directories(${Boost_INCLUDE_DIRS})
-    add_executable(a.out demo.cc)
+    add_executable(a.out ./create_file.cc)
     target_link_libraries(a.out ${Boost_LIBRARIES} )
 endif()
 

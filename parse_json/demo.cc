@@ -20,6 +20,29 @@ struct LaneParams
 {
 };
 
+
+namespace ns {
+    // a simple struct to model a person
+    struct person
+    {
+        std::string name;
+        std::string address;
+        int age;
+    };
+
+    void to_json(nlohmann::json& j, const person& p)
+    {
+
+        j = nlohmann::json{{"name", p.name}, {"address", p.address}, {"age", p.age}};
+    }
+
+    void from_json(const nlohmann::json& j, person& p) {
+        j.at("name").get_to(p.name);
+        j.at("address").get_to(p.address);
+        j.at("age").get_to(p.age);
+    }
+}
+
 int main(int argc, char ** argv)
 {
     /* Parse the parameters form json config file. */
@@ -101,10 +124,19 @@ int main(int argc, char ** argv)
     /* std::ofstream oo("pretty.json"); */
     /* oo << std::setw(4) << jj << std::endl; */
     /**/
+
+    std::string s1 = "Hello, world!";
+    nlohmann::json js = s1;
+    auto s2 = js.get<std::string>();
+
+
+
     return 0;
 }
 
 /**
  * Q: What is json?
  * A: https://www.tutorialspoint.com/json/json_data_types.htm
+ * https://github.com/nlohmann/json
  */
+
