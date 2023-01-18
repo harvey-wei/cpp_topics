@@ -5,3 +5,10 @@ cmake -H. -Bbuild \
 && cmake --build build
 
 exit 0
+
+# The alternative way
+# mkdir build    under the same parent directory of the src
+# cd build
+# cmake ..      .. means going one level above to see CMakeLists.txt (configure and generating)
+# make          still in the build directory (build the target (compile and link to lib))
+
