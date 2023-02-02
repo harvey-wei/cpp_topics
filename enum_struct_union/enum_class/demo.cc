@@ -23,8 +23,11 @@ class Point
             undecided
         };
 
+        enum {left, right};
+
         float x, y;
         Traversible drivable = Traversible::traversable;
+        int z = left;
 };
 
 int main()

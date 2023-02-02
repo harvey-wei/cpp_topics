@@ -5,12 +5,12 @@ using namespace boost::filesystem;
 
 int main()
 {
-    path p{"./Test"};
+    path file_path{"./Test"};
     try
     {
-        if (create_directory(p))
+        if (create_directory(file_path))
         {
-          rename(p, "./Test2");
+          rename(file_path, "./Test2");
           /* boost::filesystem::remove("../Test2"); */
         }
 

@@ -129,8 +129,6 @@ int main(int argc, char ** argv)
     nlohmann::json js = s1;
     auto s2 = js.get<std::string>();
 
-
-
     return 0;
 }
 

@@ -110,6 +110,25 @@ struct remove_bounds<T[N]> /* But the number of parameters after class name equa
     typedef T type;
 };
 
+
+template<typename T>
+struct StructDemo
+{
+    StructDemo()
+    {
+        T t = 100.0f;
+        std::cout << "k is " << std::endl;
+    }
+};
+
+template<int k, typename T> void
+funct()
+{
+    StructDemo<T> sd;
+
+    return;
+}
+
 int main()
 {
     std::vector<int> int_vec = {1, 2, 3, 4, 5};
@@ -120,6 +139,9 @@ int main()
 
     Test<char> t_char;
     Test<int> t_int;
+
+    funct<1000, float>();
+
 
     return 0;
 }
