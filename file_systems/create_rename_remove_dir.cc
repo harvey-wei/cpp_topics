@@ -11,7 +11,7 @@ int main()
         if (create_directory(file_path))
         {
           rename(file_path, "./Test2");
-          /* boost::filesystem::remove("../Test2"); */
+          boost::filesystem::remove("../Test2"); // remove directories
         }
 
         std::cout << current_path() << '\n';
