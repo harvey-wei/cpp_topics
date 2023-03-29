@@ -53,7 +53,7 @@ int main(int argc, char ** argv)
     std::string paths = params["path_to_pcds"];
     int start_frame = params["start_frame"];
     bool is_vis_intensity = params["is_vis_intensity"];
-    bool is_step_mode = params["is_step_mode"];
+    bool is_step_mode = params["is_step_mode"].get<bool>();
 
     // Using (raw) string literals and json::parse
     nlohmann::json ex1 = nlohmann::json::parse(R"(
@@ -86,6 +86,8 @@ int main(int argc, char ** argv)
 
     // add another object (using an initializer list of pairs)
     j["object"] = { {"currency", "USD"}, {"value", 42.99} };
+
+    /* Parse the json paramters with specific type. */
 
     // instead, you could also write (which looks very similar to the JSON above)
     nlohmann::json j2 = {
@@ -128,6 +130,7 @@ int main(int argc, char ** argv)
     std::string s1 = "Hello, world!";
     nlohmann::json js = s1;
     auto s2 = js.get<std::string>();
+
 
     return 0;
 }

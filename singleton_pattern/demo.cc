@@ -16,10 +16,12 @@ class My_Singleton
         std::string value;
 
     public:
-        /* The lhs is the instance on which the = is assigned.
+        /**
+          The lhs is the instance on which the = is assigned.
            Hence, return void
+           assignment should return non-const reference for chain of assignments.
         */
-        void operator=(const My_Singleton& rhs) = delete;  // Disallow assignment
+        My_Singleton& operator=(const My_Singleton& rhs) = delete;  // Disallow assignment
 
         /* copy constuctor take as input the const reference to rhs. */
         My_Singleton(const My_Singleton& rhs) = delete; // Disallow copying
