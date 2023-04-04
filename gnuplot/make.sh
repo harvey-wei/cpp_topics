@@ -2,7 +2,7 @@
 
 # clangd will find the compile_commands.json in build
 cmake -H. -Bbuild \
-&& cmake --build build --target install
+&& cmake --build build
 
 exit 0
 
@@ -11,9 +11,4 @@ exit 0
 # cd build
 # cmake ..      .. means going one level above to see CMakeLists.txt (configure and generating)
 # make          still in the build directory (build the target (compile and link to lib))
-
-
-# Build but not install
-# cmake -S . -B build \
-# && cmake --build build
 

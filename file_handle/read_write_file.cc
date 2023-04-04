@@ -16,6 +16,8 @@ int main ()
    // To clear the content in the file before opening, use ios::trunc
 
    // Create and open a text file if it does not exists
+   // Don't forget to close it.
+   // https://stackoverflow.com/questions/48085781/what-is-the-difference-among-iosapp-out-and-trunc-in-c
    ofstream outfile;
    outfile.open("afile.txt", ios::app);
 
