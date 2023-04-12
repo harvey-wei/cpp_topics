@@ -50,6 +50,15 @@ int main(int argc, char ** argv)
     /* nlohmann::json is a class for representing a json object */
     nlohmann::json params = nlohmann::json::parse(params_file);  // parse is static member function
 
+    std::ifstream j2_file_path("./j2.json");
+    nlohmann::json j2_params = nlohmann::json::parse(j2_file_path);
+    std::vector<float> dists = j2_params["dist_thres"].get<std::vector<float>>();
+    std::cout << "distance threshold: " << std::endl;
+    for (const auto& dist: dists)
+    {
+        std::cout << dist << " " << std::endl;
+    }
+
     std::string paths = params["path_to_pcds"];
     int start_frame = params["start_frame"];
     bool is_vis_intensity = params["is_vis_intensity"];

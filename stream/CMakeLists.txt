@@ -5,6 +5,6 @@ set(CMAKE_CXX_STANDARD 11)
 set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 
 # add_executable(a.out demo_official.cc)
-add_executable(a.out demo.cc)
+add_executable(a.out ./demo_getline.cc)
 # add_executable(a.out demo_istream_get.cc)
 

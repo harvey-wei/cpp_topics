@@ -2,6 +2,7 @@
 #include <string>
 #include <iostream>
 #include <vector>
+#include <fstream>
 using namespace std;
 
 int main()
@@ -79,7 +80,7 @@ int main()
        is: The object from which chars are extracted.
        str: string object where the extracted chars are stored.
        return is is!
-       If the delimiter is found, what is extracted will be discarded.
+       If the delimiter is found, ** what is extracted will be discarded **.
        The default delimiter is newline which means you can use getline read lines by line.
     */
     /*
@@ -92,6 +93,7 @@ int main()
     /* When does the loop terminate?
        getline sets the eofbit of ss when it reaches the End Of File.
        This causes the operator bool of ss to evaluate to false, which then terminates your loop
+       getline return input stream.
     */
     while (getline(ss, node_val, ','))
     {
@@ -100,7 +102,45 @@ int main()
 
     std::cout << std::endl;
 
+    std::cout << " input stream: " << ss.str() <<std::endl;
 
+    fstream data_file;
+    data_file.open("xyz.txt", ios::out);
+
+    if (data_file.is_open())
+    {
+        data_file << "This is 1 line\n";
+        data_file << "This is 2 line\n";
+        data_file << "This is 3 line\n";
+        data_file << "This is 4 line\n";
+        data_file << "This is 5 line\n";
+        data_file.close();
+    }
+    else
+    {
+        std::cout << "Failed to open xyz.txt!" << std::endl;
+    }
+
+    string data;
+    data_file.open("xyz.txt", ios::in);
+    if (data_file.is_open())
+    {
+        string data;
+        /* You can image there is a pointer in getline function to mark where it stops at the
+           previous iteration. */
+        while (getline(data_file, data))
+        {
+            cout << data << '\n';
+        }
+
+        data_file.close();
+    }
 
     return 0;
 }
+
+/*
+ * \ref https://stackoverflow.com/questions/67631098/what-is-the-difference-between-ifstream-ofstream-and-fstream
+ * \ref https://cplusplus.com/reference/string/string/getline/
+ */
+
