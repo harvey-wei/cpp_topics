@@ -1,0 +1,32 @@
+{
+    "pcd_name": "000015.pcd",
+    "point_count": 78750,
+    "weather": "sunny",
+    "scene": "highway",
+    "points": [
+        {
+            "point_index": 0,
+            "category": "vegetation"
+        },
+        {
+            "point_index": 1,
+            "category": "road"
+        },
+        {
+            "point_index": 2,
+            "category": "fencing"
+        },
+        {
+            "point_index": 3,
+            "category": "obstacle"
+        },
+        {
+            "point_index": 4,
+            "category": "undefined"
+        },
+        {
+            "point_index": 5,
+            "category": "undefined"
+        }
+    ]
+}

@@ -4,6 +4,32 @@
 
 using json = nlohmann::json;
 
+namespace PointLabel
+{
+    struct Cat2Pts
+    {
+        std::string category;
+        std::vector<int> pt_indices;
+    };
+
+    void
+    to_json(nlohmann::json& j, const Cat2Pts& a)
+    {
+        j = nlohmann::json{{"category", a.category}, {"point_indices", a.pt_indices}};
+
+        return;
+    }
+
+    void
+    from_json(const nlohmann::json& j, Cat2Pts& a)
+    {
+        j.at("category").get_to(a.category);
+        j.at("point_indices").get_to(a.pt_indices);
+
+        return;
+    }
+};
+
 namespace ns {
     struct Person {
         std::string name;
@@ -69,13 +95,23 @@ main(int argc, char** argv)
     person_file << std::setw(4) << j << std::endl;
     person_file.close();
 
-    std::ifstream ann_json_path("000154.json");
+    std::ifstream ann_json_path("./000154.json");
     nlohmann::json ann_json = nlohmann::json::parse(ann_json_path);
 
-    std::vector<ann::Ann> anns = ann_json["points"].get<std::vector<ann::Ann>>();
+    const int point_cnt = ann_json["point_count"].get<int>();
+    std::cout << "point count: " << point_cnt << std::endl;
 
-    std::cout << "anns[1]: " << anns[1].point_index << " " << anns[1].category << std::endl;
+    std::vector<PointLabel::Cat2Pts> anns =
+            ann_json["categories"].get<std::vector<PointLabel::Cat2Pts>>();
+    std::cout << "anns size: " << anns.size() << std::endl;
 
+    for (const auto ann: anns)
+    {
+        std::cout << "category " << ann.category << " has " << ann.pt_indices.size() << " points."
+                << std::endl;
+    }
+
+    /* std::cout << "anns[1]: " << anns[78760].point_index << " " << anns[78760].category << std::endl; */
 
     // that's it
     /* assert(p == p2); */

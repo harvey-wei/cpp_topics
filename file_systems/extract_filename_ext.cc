@@ -10,4 +10,6 @@ main()
     std::cout << "filename and extension : " << p.filename() << std::endl; // file.ext
     std::cout << "filename only          : " << p.stem() << std::endl;     // file
     std::cout << "file extension         : " << p.extension() << std::endl; // .ext
+
+    std::cout << p.stem().string() << std::endl;
 }

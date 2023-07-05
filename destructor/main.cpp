@@ -7,12 +7,13 @@ using namespace std;
 // for the sake of convenient sharing across source files!!!
 /* If we do not write our own destructor in class, compiler creates a default destructor for us. The default destructor works fine unless we have dynamically allocated memory or pointer in class. When a class contains a pointer to memory allocated in class, we should write a destructor to release memory before the class instance is destroyed. This must be done to avoid memory leak.*/
 
-int main()
+int
+main()
 {
 	Teacher t1("Bob",12);   // instantiate from the stack!!!
 	Teacher t2(t1);
 	Teacher t3 = t1;
-	test_func(t1); //  invoke the copy constuctor!!!! 
+	test_func(t1); //  invoke the copy constuctor!!!!
 	// only one of the copy constuctor and constuctor will be invoked when object is created
 	Teacher * p = new Teacher;  // instantiated from the heap!!!
 	if (!p)

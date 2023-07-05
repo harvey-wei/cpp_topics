@@ -4,5 +4,6 @@ project(project_name)
 set(CMAKE_CXX_STANDARD 14)
 set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 
+# add_executable(a.out ./array_struct.cc)
 add_executable(a.out ./custom_struct.cc)
 

@@ -1,0 +1,22 @@
+{
+    "file_name": "array_struct.json",
+    "structs":
+    [
+        {
+            "Display": "abcd",
+            "ID": 100,
+            "Nested": {
+              "Name": "Test Name",
+              "Value": "Test Value"
+            }
+        },
+        {
+            "Display": "aaaa",
+            "ID": 10,
+            "Nested": {
+              "Name": "Test aaName",
+              "Value": "Test aaValue"
+            }
+        }
+    ]
+}

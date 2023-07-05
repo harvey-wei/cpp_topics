@@ -11,7 +11,8 @@ Teacher::Teacher(string _name, int _age)
 }
 
 
-string Teacher::get_name()
+string
+Teacher::get_name()
 {
 	return m_str_name;
 }
