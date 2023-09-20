@@ -33,7 +33,7 @@ int main()
 
     int len = sizeof(demo)/sizeof(demo[0]);
 
-    cout<<"Before sorting array : ";
+    cout << "Before sorting array : ";
     for(int i=0; i<len; i++)
     {
         cout<<" "<<demo[i];
@@ -42,7 +42,7 @@ int main()
     /* By default, std::sort() sort the data in non-descending order. */
     std::sort(demo, demo + len); //Sorting demo array in-place
 
-    cout<<"\n\nAfter sorting array : ";
+    cout << "\n\nAfter sorting array : ";
     for(int i=0; i<len; i++)
     {
         cout<<" "<<demo[i];

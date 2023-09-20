@@ -24,6 +24,26 @@ void print_8bit_bin(const char num)
 
 }
 
+void print_int_bin(const unsigned int& num)
+{
+    std::cout << "32 bit num " << int(num) << "'s binary representation" << std::endl;
+
+    /* 1 << i with i ranges from 0 to 31 as an identity int32 */
+    /* bitwise with a left-shifted 1 to sift the bit -> true for 1 and false for 0. */
+    for (int i = 31; i >= 0; --i)
+    {
+        if (num & (1u << i))
+        {
+            std::cout << "1";
+        }
+        else
+        {
+            std::cout << "0";
+        }
+    }
+
+}
+
 int main()
 {
     char num = -25;
@@ -47,6 +67,10 @@ int main()
     print_8bit_bin(num);
 
     std::cout << (-1 >> 10);
+
+    unsigned int num_uint32 = 12;
+
+    print_int_bin(num_uint32);
 
 
     return 0;
@@ -75,6 +99,12 @@ int main()
 
    Q: How does the computer store real numbers?
    A: https://www.cs.mcgill.ca/~cs573/fall2002/notes/lec273/lecture3/#212
+   http://homepage.divms.uiowa.edu/~ghosh/3-9-10.pdf
+
+   Q: How does the computer store floating-point zero?
+   A: Both fractional part of mantissa and biased exponent being zero indicates the zero.
+   (-1)^S * 1.F * 2^E
 
    https://stackoverflow.com/questions/21819682/is-integer-multiplication-really-done-at-the-same-speed-as-addition-on-a-modern
 */
+

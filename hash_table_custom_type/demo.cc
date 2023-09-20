@@ -109,6 +109,19 @@ int main()
     std::cout << "nts1 and nts2: " << (ptr_hash(nts1)==ptr_hash(nts2)) << '\n';
     std::cout << "str1 and str2: " << (str_hash(str1)==str_hash(str2)) << '\n';
 
+
+    std::unordered_set<int> occupied_cells;
+    occupied_cells.insert(0);
+    occupied_cells.insert(1);
+    occupied_cells.insert(2);
+    occupied_cells.insert(3);
+
+    for (auto& num: occupied_cells)
+    {
+        std::cout << "erase " << num << std::endl;
+        /* occupied_cells.erase(num); */
+    }
+
     return 0;
 }
 

@@ -11,6 +11,10 @@ int main()
     b = (b + 1) >> 1;
     std::cout << "Half of b: " << b << std::endl;
 
+    int c = -13;
+    c = (c + 1) >> 1; // righ-shift by 1 means divivision by 2^1, namely halving
+    std::cout << "Half of c: " << c << std::endl;
+
     return 0;
 }
 

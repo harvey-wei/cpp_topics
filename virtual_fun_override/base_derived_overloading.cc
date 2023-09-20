@@ -28,6 +28,8 @@ int main()
 	derived d;
 	cout << "Compiled successfully" << endl;
     d.func(10);
+    /* d.func(); */
+
 	return 0;
 }
 

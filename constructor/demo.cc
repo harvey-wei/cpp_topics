@@ -115,8 +115,19 @@ class Point {
         int getY() { return y; }
 };
 
+struct Node
+{
+    int val;
+
+    Node(){};
+    Node(int _val)
+        : val(_val)
+    {}
+};
+
 int main()
 {
+    Node* n = new Node();
 	student s; // constructor gets called automatically when
 			// we create the object of the class
 	s.display();

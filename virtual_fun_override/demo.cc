@@ -26,7 +26,12 @@ int main()
 {
 	Base b;
 	derived d;
-	cout << "Compiled successfully" << endl;
+
+    Base& base_ref = d;
+    base_ref.func();
+
+	std::cout << "Compiled successfully" << endl;
+
 	return 0;
 }
 
@@ -57,7 +62,7 @@ int main()
   * Q: Can virtual function be defined in both base class and derived class?
   * A: Yes.
   *
-  * Q: What is the point of the final keyword after virtual function?
+  * Q: What is the point of the *final* keyword after virtual function?
   * A: Sometimes you don’t want to allow derived class to override the base class’ virtual function.
   * C++ 11 allows built-in facility to prevent overriding of virtual function using final specifier.
   * final virtual function can only be defined in base class.

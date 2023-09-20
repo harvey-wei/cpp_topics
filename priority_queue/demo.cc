@@ -57,6 +57,9 @@ int main() {
     // That is, the front of the queue contains the "last" element according to the weak ordering
     //  imposed by Compare.
     // std::greater<int> makes the max priority queue act as a min priority queue
+    // When comparator returns true, the lhs element is placed before the rhs element.
+    // In the case of std::greater as comparator, the "last" element according to the weak ordering
+    // imposed by std::greater is the smaller one. Hence, mim heap
     std::priority_queue<int, std::vector<int>, std::greater<int>>
         minq1(data.begin(), data.end());
 
@@ -94,3 +97,9 @@ int main() {
 
     return 0;
 }
+
+
+/*
+ * Q: What is greater?
+ * A: https://cplusplus.com/reference/functional/greater/
+ */
