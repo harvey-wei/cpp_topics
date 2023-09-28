@@ -59,6 +59,7 @@ class Thing
 
 };
 
+/* class T is the formal parameter of template. */
 template<class A>
 class Thing<A, int> /* partial specialization of the class template. */
 {
