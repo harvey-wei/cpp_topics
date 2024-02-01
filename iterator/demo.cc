@@ -40,6 +40,10 @@ int main()
 		cout << *i << " ";
 	}
 
+    const std::vector<int>::iterator it = v.begin();
+    *it = 11;
+    it = v.end(); // error: assignment of read-only variable ‘it’
+
 	return 0;
 }
 

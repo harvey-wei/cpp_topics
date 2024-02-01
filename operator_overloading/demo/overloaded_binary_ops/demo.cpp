@@ -16,7 +16,6 @@ int main()
 	/* Coordinate coor1(1,3); */
 	/* cout << coor1.get_x() << "," << coor1.get_y() << endl; */
 	/* /1* ++coor1; // prefix increment operator, coor1.operator++(coor1) *1/ */
-	
 	/* cout << (coor1++).get_x() << "," << (coor1++).get_y() << endl; */
 	/* // expected output, 1, 4 */
 

@@ -3,6 +3,7 @@
 #include "Student.h"
 using namespace std;
 
+/* https://www.geeksforgeeks.org/when-do-we-use-initializer-list-in-c/ */
 int main()
 {
 	Student stu;

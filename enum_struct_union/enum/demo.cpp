@@ -8,6 +8,8 @@
 enum year{Jan, Feb, Mar, Apr, May, Jun, Jul,
 		Aug, Sep, Oct, Nov, Dec};
 
+typedef enum{A = 0, B = 7, C = 10} data_10_type;
+
 int main()
 {
     int i;
@@ -18,6 +20,13 @@ int main()
 
     /* No need to create an enum variable */
     std::cout << "Jan: " << Jan << std::endl;
+
+    std::cout << "size of data_10_type " << sizeof(data_10_type) << " bytes!" << std::endl;
+
+    data_10_type s = C;
+    data_10_type * s_add = &s;
+
+    std::cout << "s: " << s_add << std::endl;
 
     return 0;
 }

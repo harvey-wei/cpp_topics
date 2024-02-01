@@ -12,4 +12,6 @@ main()
     std::cout << "file extension         : " << p.extension() << std::endl; // .ext
 
     std::cout << p.stem().string() << std::endl;
+
+    return 0;
 }

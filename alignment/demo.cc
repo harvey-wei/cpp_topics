@@ -1,48 +1,57 @@
-// alignment_of example
 #include <iostream>
-#include <stdio.h>
-#include <stdalign.h>
+#include <chrono>
 
-// objects of struct S can be allocated at any address
-// because both S.a and S.b can be allocated at any address
-struct S {
-    char a; // size: 1, alignment: 1
-    char b; // size: 1, alignment: 1
-}; // size: 2, alignment: 1
-// objects of struct X must be allocated at 4-byte boundaries
-// because X.n must be allocated at 4-byte boundaries
-// because int's alignment requirement is (usually) 4
-struct X {
-    int n;  // size: 4, alignment: 4
-    char c; // size: 1, alignment: 1
-    // three bytes padding
-}; // size: 8, alignment: 4
+struct MyStruct {
+    char c;
+    int i;
+};
 
-int main(void)
+struct MyStructTwo {
+    int i;    // 4 bytes
+    char c1;  // 1 byte
+    char c2;  // 1 byte
+
+    // Total size: 8 bytes
+};
+
+struct MyStructThree
 {
-    /* alignof value is the alignment requirement of the largest element in the structure. */
-    /* https://stackoverflow.com/questions/11386946/whats-the-difference-between-sizeof-and-alignof */
-    printf("sizeof(struct S) = %zu\n", sizeof(struct S));
-    printf("alignof(struct S) = %zu\n", alignof(struct S));
-    printf("sizeof(struct X) = %zu\n", sizeof(struct X));
-    printf("alignof(struct X) = %zu\n", alignof(struct X));
+    char c1; // 1 byte
+    int i; // 4 bytes
+    char c2; // 1 byte
+
+    // Total size: 12 bytes
+};
+
+
+int main() {
+    MyStruct myStruct;
+
+    const int max_iter = 100000000;
+
+    auto start = std::chrono::high_resolution_clock::now();
+    for (int i = 0; i < max_iter; ++i) {
+        myStruct.c = 'a';
+    }
+    auto end = std::chrono::high_resolution_clock::now();
+    std::cout << "Time taken with aligned access: "
+              << std::chrono::duration_cast<std::chrono::microseconds>(end - start).count()
+              << " microseconds\n";
+
+    start = std::chrono::high_resolution_clock::now();
+    for (int i = 0; i < max_iter; ++i) {
+        *reinterpret_cast<char*>(&myStruct + 1) = 'a'; // Unaligned access
+    }
+    end = std::chrono::high_resolution_clock::now();
+    std::cout << "Time taken with unaligned access: "
+              << std::chrono::duration_cast<std::chrono::microseconds>(end - start).count()
+              << " microseconds\n";
+
+
+
+    std::cout << "Size of MyStructTwo: " << sizeof(MyStructTwo) << " bytes\n";
+
+
+    return 0;
 }
 
-/* int main() */
-/* { */
-/*   std::cout << "alignment_of:" << std::endl; */
-/*   std::cout << "char: " << std::alignment_of<char>::value << std::endl; */
-/*   std::cout << "int: " << std::alignment_of<int>::value << std::endl; */
-/*   std::cout << "int[20]: " << std::alignment_of<int[20]>::value << std::endl; */
-/*   std::cout << "long long int: " << std::alignment_of<long long int>::value << std::endl; */
-/*   std::cout */
-/**/
-/*   return 0; */
-/* } */
-
-
-/**
- * https://www.geeksforgeeks.org/structure-member-alignment-padding-and-data-packing/
- * Wikipedia Reference:
- * https://en.wikipedia.org/wiki/Data_structure_alignment
- */

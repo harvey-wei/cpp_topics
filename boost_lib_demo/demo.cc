@@ -14,7 +14,13 @@ public:
     {
         for(int ix = 0; ix < 10000000; ++ix)
                 vec.push_back(ix);
-        sort(vec.rbegin(), vec.rend());
+
+        // sort the vector vec in descending order
+        sort(vec.begin(), vec.end());
+
+
+
+        cout << vec[0] << endl;
     }
 private:
         vector<int> vec;

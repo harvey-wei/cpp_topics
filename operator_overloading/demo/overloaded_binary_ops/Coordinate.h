@@ -16,7 +16,7 @@ class Coordinate
 		Coordinate(int _x, int _y);
 		Coordinate & operator++();   // unary operator, prefix ++
 		Coordinate operator++(int); // int is a flag for suffix ++
-		// For suffix ++(++a), the expression's value = old value!Hence, can not return a reference but a new object
+		// For suffix ++(a++), the expression's value = old value!Hence, can not return a reference but a new object
 		// operator function as an member function!!!
 		/* Coordinate & operator-();    // minus unary operator */
 

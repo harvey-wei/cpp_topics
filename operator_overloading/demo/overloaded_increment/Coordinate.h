@@ -3,6 +3,7 @@
 #include <iostream>
 using namespace std;
 
+// https://www.programiz.com/article/increment-decrement-operator-difference-prefix-postfix
 class Coordinate
 {
 	// Recall Friend keyword is not dictated by access qualifiers, public, private and protected
@@ -11,7 +12,7 @@ class Coordinate
 		// Constructor
 		Coordinate(int _x, int _y);
 		Coordinate & operator++();   // unary operator, prefix ++
-		
+
 		Coordinate operator++(int); // int is a flag for suffix ++
 		// For suffix ++(++a), the expression's value = old value!Hence, can not return a reference but a new object
 		// operator function as an member function!!!
@@ -19,7 +20,7 @@ class Coordinate
 
 		int get_x();
 		int get_y();
-	
+
 	private:
 		int m_int_x;
 		int m_int_y;

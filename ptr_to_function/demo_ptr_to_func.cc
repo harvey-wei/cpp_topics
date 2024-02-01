@@ -15,6 +15,7 @@ int main()
 {
     // fun_ptr is a pointer to function fun()
     // verbose form with address operator &
+    // void(int) is the signature of function, i.e. takes a int and return none
     void (*fun_ptr)(int) = &fun;
 
     // simple form without address operator & since function name itself is actually a pointer to

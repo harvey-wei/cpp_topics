@@ -44,15 +44,16 @@ class Point {
            Point p;
            will give rise to an error!
         */
-        Point(int x1, int y1)
+        /* The explicit keyword is used to prevent implicit conversion from (int, int) to Point */
+        explicit Point(int x1, int y1)
         {
             x = x1;
             y = y1;
         }
 
-        /* Copy constructor
-
-        */
+        /**
+         * Copy constructor
+         */
         Point(const Point& pt)
         {
             x = pt.x;

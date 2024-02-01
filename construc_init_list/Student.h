@@ -31,6 +31,7 @@ class Circle
 {
 	public:
 		// constructor with initializer list
+        // also use default value
 		Circle(double _radius, double _center):m_db_Pi(3.14), m_db_radius(_radius), m_db_center(_center)
 		{
 			/* m_db_Pi = 3.14;	// const object can not be assigned! */

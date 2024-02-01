@@ -13,7 +13,7 @@ int main()
     /* https://blog.csdn.net/u013834525/article/details/104047635 */
     /* https://www.educative.io/answers/what-are-move-semantics-and-copy-semantics-in-cpp11 */
 
-    res.push_back(std::move(a));
+    res.push_back(std::move(a)); // std::move returns a rvalue reference of lrvalue
     res.push_back(a);
     res.push_back(a);
 

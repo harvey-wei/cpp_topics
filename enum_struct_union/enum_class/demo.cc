@@ -23,6 +23,7 @@ class Point
             undecided
         };
 
+        /* Anonymous enum class. */
         enum {left, right};
 
         float x, y;
@@ -32,7 +33,6 @@ class Point
 
 int main()
 {
-
 	enum class Color { Red,
 					Green,
 					Blue };

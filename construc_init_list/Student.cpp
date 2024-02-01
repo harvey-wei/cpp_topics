@@ -39,3 +39,22 @@ Circle::get_area()
 {
 	return m_db_Pi * m_db_radius * m_db_radius;
 }
+
+/* Q1: Why should a non-static const data member be initialized in a member initializer list or
+ * a default initializer list.
+ * https://stackoverflow.com/questions/63776841/memory-allocation-for-non-static-data-members-in-class
+ * a const variable cannot be modified once the constructor definition, i.e. brace {} is being executed.
+ * Constructor is called to allocate memory for non-static member.
+ *
+ * What kind of variables must be initialized using initializer list?
+ * non-static data member, reference data member,
+ *
+ * Q2: Why should a reference data member should be initialized in the initializer list?
+ * A: 1. As soon as an object is created compiler will allocate memory to reference member by
+ *       running the constructor of class. Hence, before entering the brace part {} of constructor,
+ *    2. Reference member should be initialized and declared at the same step. Inititialization of
+ *       data member in the initializer list amounts to declaring and initializing at the same step.
+ *     https://www.geeksforgeeks.org/can-c-reference-member-be-declared-without-being-initialized-with-declaration/
+ * Q3: For initialization of member objects which do not have default constructor.
+ * https://www.geeksforgeeks.org/when-do-we-use-initializer-list-in-c/
+ */

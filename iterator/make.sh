@@ -1,6 +1,6 @@
 #!/bin/zsh
 
-cmake -H. -B_builds \
-&& cmake --build _builds
+cmake -H. -Bbuilds \
+&& cmake --build builds
 
 exit 0

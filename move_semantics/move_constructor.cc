@@ -39,6 +39,7 @@ public:
 	// Move Constructor
     // The key to move constructor is copy pointer in place of value and null-out the input pointer to temporary
     // data.
+    // Be careful to call std::move as std::move might null out the input pointer to temporary.
 	Move(Move&& source)
 		: data{ source.data }
 	{
@@ -115,10 +116,14 @@ int main()
     A&  a_ref3 = A();  // Error! A() is an temporary object, rvalue!
     A&& a_ref4 = A();  // Ok to bind a temporary object
 
-     std::vector<std::string> vec;
-     vec.emplace_back(std::string("Hello")); // moves
+    lvalue reference can be bound to a lvalue only  while rlvalue can be bound to both lvalue and
+    rvalue(i.e. temporary object)
+
+     std::vector<std::string> vec;  // vec is a lvalue
+     vec.emplace_back(std::string("Hello")); // moves since std::string("Hello") is a rvalue -> call
+     move constructor
      std::string s;
-     vec.emplace_back(s); //copies
+     vec.emplace_back(s); //copies, call copy constructor
      https://stackoverflow.com/questions/4303513/push-back-vs-emplace-back
 
   */
