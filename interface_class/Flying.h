@@ -1,6 +1,8 @@
 #ifndef FLYING_H
 #define FLYING_H
 #include "Flying.h"
+
+
 /* 
 	Interface Class: Flying
 	Member function: void takeoff(), void land() 
@@ -35,10 +37,19 @@ Interfaca Class Set is contained within the Abstract Class Set!!!
 //
 
 // Flying means "able to fly"
-class Flying 
+class Flying_
 {
+	// Abstract class has neither constructor nor destructor.
+	// ABC can not be used to instantiate but can be inherited.
 	public:
 		virtual	void takeoff() = 0;   // go off the land
 		virtual void land() = 0;      // go down to the land
+};
+
+class Flying
+{
+	public:
+		virtual void takeoff() = 0; // pure virtual function
+		virtual void land() = 0;
 };
 #endif

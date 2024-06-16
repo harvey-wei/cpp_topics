@@ -1,13 +1,16 @@
-cmake_minimum_required(VERSION 3.1)
+cmake_minimum_required(VERSION 3.3)
 project(proj)
 
-set(CMAKE_CXX_STANDARD 11)
+set(CMAKE_CXX_STANDARD 14)
 set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 
 # https://blog.csdn.net/zhanghm1995/article/details/105466372
 
+if(POLICY CMP0146)
+  cmake_policy(SET CMP0146 OLD) 
+endif()
 # This where <PackageName>Config.cmake or Find<PackageName>.cmake are.
-set(OpenCV_DIR "/opt/homebrew/lib/cmake/opencv4")
+# set(OpenCV_DIR "/opt/homebrew/lib/cmake/opencv4")
 
 find_package(OpenCV REQUIRED)
 if (OpenCV_FOUND)

@@ -3,7 +3,7 @@
 using namespace std;
 // Public mode of inheritance preserves/retains/maintains the access specifier except that the private members become inaccessible to the derived class. This feature of publicly inheriting makes it used more often than the other modes!!
 
-class Shape 
+class Shape
 {
 	public:
 		Shape()
@@ -24,7 +24,7 @@ class Shape
 		}
 };
 
-class Circle : public Shape 
+class Circle : public Shape
 {
 	public:
 		Circle(double _r)

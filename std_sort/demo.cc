@@ -31,7 +31,7 @@ int main()
     //array initialization
     int demo[5] = {5, 4, 3, 3, 1};
 
-    int len = sizeof(demo)/sizeof(demo[0]);
+    int len = sizeof(demo)/sizeof(demo[0]); //sizeof return the size in bytes
 
     cout << "Before sorting array : ";
     for(int i=0; i<len; i++)
@@ -39,7 +39,7 @@ int main()
         cout<<" "<<demo[i];
     }
 
-    /* By default, std::sort() sort the data in non-descending order. */
+    /* By default, std::sort() sort the data in non-descending order in-place. */
     std::sort(demo, demo + len); //Sorting demo array in-place
 
     cout << "\n\nAfter sorting array : ";

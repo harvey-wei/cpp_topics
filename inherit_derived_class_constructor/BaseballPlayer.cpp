@@ -20,4 +20,3 @@ int BaseballPlayer::get_home_runs() const
 {
 	return m_homeRuns;
 }
-	

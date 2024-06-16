@@ -128,6 +128,7 @@ int main()
         string data;
         /* You can image there is a pointer in getline function to mark where it stops at the
            previous iteration. */
+		/* By default, the delimiter is \n*/
         while (getline(data_file, data))
         {
             cout << data << '\n';

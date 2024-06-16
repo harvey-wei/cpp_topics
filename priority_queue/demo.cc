@@ -43,7 +43,73 @@ struct comp_node
     }
 };
 
-int main() {
+struct NodeCmp
+{
+	bool operator()(const Node& lhs, const Node& rhs)
+	{
+		/* PQ will pop the element which is put in the back. */
+		if (lhs.x == rhs.x) return lhs.y > rhs.y;
+
+		/* In descending order, smaller is the root of pq*/
+		/* smaller is poped first*/
+		return lhs.x > rhs.x;
+
+	}
+};
+
+int main()
+{
+	std::vector<int> data{1,8,5,6,3,4,0,9,7,2};
+	print("data", data);
+
+	std::priority_queue<int> q1; // Max queue
+
+	for (int n : data)
+	{
+		q1.push(n);
+	}
+
+	print_queue("q1", q1);
+
+	auto comp = [](const int& lhs, const int& rhs){ return lhs > rhs;};
+	std::priority_queue<int, std::vector<int>, decltype(comp)> q2(comp); // min queue
+
+
+	for (int n : data)
+	{
+		q2.push(n);
+	}
+
+	print_queue("q2", q2);
+
+	std::priority_queue<int, std::vector<int>, std::greater<int>> q3; // min heap
+	for (int n : data)
+	{
+		q3.push(n);
+	}
+
+	print_queue("q3", q3);
+
+
+    std::priority_queue<Node, std::vector<Node>, NodeCmp> pq_node;
+
+    for (int i = 0; i < 10; ++i)
+    {
+        pq_node.push(Node(rand(), rand()));
+    }
+
+
+    while (!pq_node.empty())
+    {
+        std::cout << pq_node.top().x << " " << pq_node.top().y << std::endl;
+        pq_node.pop();
+    }
+	return 0;
+}
+
+
+int main1()
+{
     const auto data = {1,8,5,6,3,4,0,9,7,2};
     print("data", data);
 

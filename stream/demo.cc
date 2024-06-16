@@ -46,10 +46,13 @@ int main()
     data_stream.str("1,2,3,#");
     get_char(data_stream);
     get_char(data_stream);
-    get_char(data_stream);
+    /* get_char(data_stream); */
 
     std::string temp = data_stream.str();
     std::cout << temp << std::endl;
+
+	int a , b, c;
+	a = ((b + c));
 
     /* string curr; */
     /* getline(data_stream, curr, ','); */

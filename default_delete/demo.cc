@@ -9,12 +9,12 @@ struct Point
 
     Point(std::initializer_list<coord_type> list)
     {
-        std::copy_n(list.begin(), list.size(), point.begin());
+        std::copy(list.begin(), list.size(), point.begin());
     }
 
     Point(const Point<coord_type, dimension>& other)
     {
-        std::copy_n(other.point.begin(), other.point.size(), point.begin());
+        std::copy(other.point.begin(), other.point.size(), point.begin());
     }
 
     const Point<coord_type, dimension>& operator=(const Point<coord_type, dimension>& other) =
@@ -39,7 +39,7 @@ void noInt(int) = delete;
 
 int main()
 {
-    /* noInt(1); */
+    noInt(1);
     return 0;
 }
 

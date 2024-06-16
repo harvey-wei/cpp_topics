@@ -16,6 +16,27 @@ using namespace std;
    reference to what the smart pointer points to.
 
 */
+
+template<typename T>
+class SmartPointer_
+{
+	private:
+		T* ptr;
+	public:
+		SmartPointer_(T* p = nullptr) : ptr(p) {}
+
+		~SmartPointer_()
+		{
+			delete ptr;
+		}
+
+		// overload array operator to return the raw pointer
+		T*& operator->(){ return ptr;}
+
+		// overload asterisk operator to return reference to the object pointed by ptr
+		T& operator*(){ return *ptr;}
+};
+
 template<class T>
 class SmartPointer
 {

@@ -52,6 +52,7 @@ To sum up, vtable, short for table of pointers to virtual functions, is a static
 The posts at https://www.geeksforgeeks.org/virtual-function-cpp/ and https://www.geeksforgeeks.org/virtual-functions-and-runtime-polymorphism-in-c-set-1-introduction/ offer good tutorials on the working of the virtual function!!
 */
 /*
+
 Q7: virtual function of base is overridden(re-defined) by the virtual function with same prototype of the derived!!!!!
 That base function is said to be overridden.
 Function overriding on the other hand occurs when a derived class has a definition for one of the member functions of the base class.

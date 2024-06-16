@@ -1,13 +1,15 @@
 #include <iostream>
 #include <string>
+
+
 using namespace std;
-// Here the user-defined class Coordinate 
+// Here the user-defined class Coordinate
 // Recall the derived class destructor is executed before that of the base class!!!
 // Virtual provides a mechanism to execute the derived class destructor by the base class pointer!!!
 // The prequsite is the same as that for virtual member function for polymorphism, using the pointer (reference)of base class type to point to (reference) the derived class object!
 
 // The working of the virtual destructor is exactly the same as that of virtual function, namely achieved by  VTABLE and VPTR!!!!!!
-class Coordinate 
+class Coordinate
 {
 	public:
 		Coordinate(double _x, double _y)
@@ -27,7 +29,9 @@ class Coordinate
 		double m_int_x;
 		double m_int_y;
 };
-class Shape 
+
+
+class Shape
 {
 	public:
 		Shape()
@@ -48,7 +52,8 @@ class Shape
 		}
 };
 
-class Circle : public Shape 
+
+class Circle : public Shape
 {
 	public:
 		Circle(double _x, double _y, double _r)
@@ -75,6 +80,7 @@ class Circle : public Shape
 		Coordinate *p;    // center of circle   // use the Coordinate but not inherit !!!!!!!
 };
 
+
 class Rectangle : public Shape
 {
 	public:
@@ -84,10 +90,10 @@ class Rectangle : public Shape
 			m_db_width = _width;
 			cout << "Rectangle()"<<endl;
 		}
-		
+
 		~Rectangle()
 		{
-			cout << "~Rectangle()" <<endl;	
+			cout << "~Rectangle()" <<endl;
 		}
 
 		virtual double calc_area()
@@ -101,10 +107,10 @@ class Rectangle : public Shape
 
 };
 
+
 // The virtual function should have the same interface!!!
 // int super class and sub class
 // i.e. same return type, parameter list, function name!!!!
-
 int main()
 {
 	// instantiate from the heap!!!!!

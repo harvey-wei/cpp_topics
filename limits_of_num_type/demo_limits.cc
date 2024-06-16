@@ -1,5 +1,6 @@
 #include <iostream>
-#include <limits>
+#include <climits> // INT_MIN and INT_MAX
+#include <limits> // 
 
 int main()
 {
@@ -22,6 +23,9 @@ int main()
     std::cout << "The positive min of float32: " << std::numeric_limits<float>::min() << std::endl;
     std::cout << "The max of float32: " << std::numeric_limits<float>::max() << std::endl;
     std::cout << "The real min of float32: " << -std::numeric_limits<float>::max() << std::endl;
+
+    std::cout << "The min of int: " << INT_MIN << std::endl;
+    std::cout << "The max of int: " << INT_MAX << std::endl;
 
 
     /*

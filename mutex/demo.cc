@@ -24,6 +24,13 @@ int main ()
     std::thread th1(print_block, 50, '*'); // 50 for n, '*' for c
     std::thread th2(print_block, 50, '$');
 
+	// print out the thread
+	std::cout << "th1 and th2 are now executing concurrently...\n";
+
+	int a   = 16;
+	int b = 1  7;
+
+
     // https://stackoverflow.com/questions/15148057/what-does-stdthread-join-do
     // th1 and th2 joins to main(). As a result, main() will wait for th1 and th2 to complete.
     th1.join();

@@ -11,7 +11,7 @@ class BaseballPlayer : public Person
 {
 	private:
 		double m_battingAverage;
-		int m_homeRuns;		
+		int m_homeRuns;
 
 	public:
 		// constructor

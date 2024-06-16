@@ -2,12 +2,65 @@
 #include <utility>
 #include <iostream>
 #include <type_traits>
+#include <vector>
 
 /* timing: https://stackoverflow.com/questions/31391914/timing-in-an-elegant-way-in-c */
 /* clock: https://stackoverflow.com/questions/13263277/difference-between-stdsystem-clock-and-stdsteady-clock */
 /* std::forward, https://cplusplus.com/reference/utility/forward/ */
-/* variadic: https://learn.microsoft.com/en-us/cpp/cpp/ellipses-and-variadic-templates?view=msvc-170 */
-/* function as typename: https://stackoverflow.com/questions/1174169/function-passed-as-template-argument */
+/* variadic: https://learn.microsoft.com/en-us/cpp/cpp/ellipses-and-variadic-templates?view=msvc-170 */ /* function as typename: https://stackoverflow.com/questions/1174169/function-passed-as-template-argument */
+
+int find_the_largest(std::vector<int> array)
+
+#include <iostream>
+#include <vector>
+
+// Function to find the maximum element in an array
+int findMax(std::vector<int> array) {
+    if (array.empty()) {
+        return INT_MIN;
+    }
+    
+    int max = array[0];
+    for (int i = 1; i < array.size(); i++) {
+        if (array[i] > max) {
+            max = array[i];
+        }
+    }
+    
+    return max;
+}
+
+// Test cases
+int main() {
+    // Test case 1: Empty array
+    std::vector<int> emptyArray;
+    int maxEmptyArray = findMax(emptyArray);
+    if (maxEmptyArray == INT_MIN) {
+        std::cout << "Test case 1 passed. Empty array handled correctly." << std::endl;
+    } else {
+        std::cout << "Test case 1 failed. Empty array not handled correctly." << std::endl;
+    }
+    
+    // Test case 2: Array with positive numbers
+    std::vector<int> positiveArray = {3, 7, 2, 9, 5};
+    int maxPositiveArray = findMax(positiveArray);
+    if (maxPositiveArray == 9) {
+        std::cout << "Test case 2 passed. Maximum element found correctly." << std::endl;
+    } else {
+        std::cout << "Test case 2 failed. Maximum element not found correctly."
+
+{
+    int largest = array[0];
+    for (int i = 1; i < array.size(); ++i)
+    {
+        if (array[i] > largest)
+        {
+            largest = array[i];
+        }
+    }
+    return largest;
+}
+
 
 /* ellipsis ... means variadic class template
    template(typename arg, typename... args)

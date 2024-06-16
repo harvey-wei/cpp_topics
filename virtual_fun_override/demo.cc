@@ -16,7 +16,7 @@ public:
 	// did a silly mistake by putting
 	// an argument "int a"
 	/* void func(int a) override */
-    void func() override
+    virtual void func() override
 	{
 		cout << "I am in derived class" << endl;
 	}
@@ -66,4 +66,9 @@ int main()
   * A: Sometimes you don’t want to allow derived class to override the base class’ virtual function.
   * C++ 11 allows built-in facility to prevent overriding of virtual function using final specifier.
   * final virtual function can only be defined in base class.
+  * https://www.geeksforgeeks.org/c-final-specifier/
+  *
+  * Q: overrid keyword
+  * The override keyword in C++ explicitly specifies that a virtual function in a derived class
+  * is intended to replace (or “override”) a virtual function in the base class with the same name.
   */
